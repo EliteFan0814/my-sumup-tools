@@ -1,16 +1,10 @@
 ---
-description: 一些总结性代码
+description: 这是我总结的一些前端常用工具集合
 ---
 
 # 关于本书
 
-[线上版本](https://fan552426811.gitbook.io/study/)
-
-{% page-ref page="css.md" %}
-
-{% page-ref page="js.md" %}
-
-{% page-ref page="mini-programs.md" %}
+\[访问线上版本\]\([https://fan552426811.gitbook.io/study/](https://fan552426811.gitbook.io/study/)\)
 
 
 
