@@ -4,7 +4,7 @@ description: 一些总结性代码
 
 # 关于本书
 
-\[线上版本\]\([https://fan552426811.gitbook.io/study/](https://fan552426811.gitbook.io/study/)\)
+[线上版本](https://fan552426811.gitbook.io/study/)
 
 {% page-ref page="css.md" %}
 
