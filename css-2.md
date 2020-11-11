@@ -9,7 +9,7 @@
 .course-item:nth-child(2n) {
     background-color: #f5f5f5;
 }
-// 这里当n等于0时，如下这个样式是无效的，因为元素要从第1个开始
+/* 这里当n等于0时，如下这个样式是无效的，因为元素要从第1个开始 */ 
 .course-item:nth-child(0) {
     background-color: #f5f5f5;
 }
