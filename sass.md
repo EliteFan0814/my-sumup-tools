@@ -13,7 +13,7 @@ $base-font: italic arial, sans-serif;
 $highlight-color: #F90;
 
 div{
-  $base-width:20px; // 只能在当前 div 中使用
+  $base-width:20px; // 只能在当前 div 中来使用此变量
   color:$base-color;
   font:$base-font;
   width:$base-width;
