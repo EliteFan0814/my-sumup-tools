@@ -1,11 +1,10 @@
 ---
 description: sass文档总结
 ---
+# sass文档总结
 
-# \$ 符号声明变量
-
+## $ 符号声明变量
 sass 声明的变量值用作 css 的属性值
-
 ```scss
 /*  声明变量 */
 $base-color: #fff;
@@ -18,5 +17,13 @@ div{
   font:$base-font;
   width:$base-width;
   border: 1px solid $highlight-color;
+}
+```
+## sass 中中划线和下划线命名通用
+```scss
+/*  $link-color 和 $link_color 通用 */
+$link-color: blue;
+a {
+  color: $link_color;
 }
 ```
