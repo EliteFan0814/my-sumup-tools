@@ -7,7 +7,7 @@ description: CSS常用样式集合
 ## 单行/多行省略：
 
 ```css
-<!--单行省略-->
+/*单行省略*/
 .single-lines-omit{
     width: 27em;
     white-space: nowrap;
@@ -15,7 +15,7 @@ description: CSS常用样式集合
     -o-text-overflow: ellipsis;
     overflow: hidden;
 }
-<!--多行省略-->
+/*多行省略*/
 .multiple-lines-omit {
     overflow: hidden;
     display: -webkit-box;
