@@ -38,19 +38,19 @@ description: CSS常用样式集合
 ## 绝对定位居中
 
 ```css
-<!--水平居中-->
+/*水平居中*/
 .horizontal-center{
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
 }
-<!--垂直居中-->
+/*垂直居中*/
 .vertical-center{
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
 }
-<!--水平垂直居中-->
+/*水平垂直居中*/
 .absolute-center{
     position: absolute;
     top: 50%;
@@ -90,7 +90,7 @@ input{
 \*这里注意左边的 key 值是否带分号，分号也算一个字符！  
 html 代码如下：
 
-```markup
+```html
   <div class="item-wrap">
     <div class="left-name">
       <div class="name">姓名</div>：
