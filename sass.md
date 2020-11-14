@@ -154,7 +154,7 @@ $base-width: 200px;
 
 ## sass 静默注释
 
-/_····_/ 是 css 的标准注释格式，对其他人直接可见  
+/* ···· */ 是 css 的标准注释格式，对其他人直接可见  
 // 在 sass 中使用 // 进行注释，其内容不会出现在生成的 css 文件中
 
 ## 混合器
@@ -207,5 +207,31 @@ $base-width: 200px;
     list-style-type: none;
     margin-left: 0px;
   }
+}
+```
+## 混合器传参
+和 javascript 的 function 函数几乎一模一样的用法，可以给参数赋默认值
+```scss
+/* 定义一个混合器 */
+@mixin base-color($normal,$hover:red,$visited:#f5f5f5){
+  color:$normal;
+  &:hover:$normal;
+  &:visited:$visited;
+}
+
+/* 使用混合器 使用默认值*/
+.parent{
+  @include base-color
+  font-size:15px;
+}
+/* 使用混合器 使用自定义值*/
+.parent{
+  @include base-color(black,red,green)
+  font-size:15px;
+}
+/* 使用混合器 参数值不同顺序写法*/
+.parent{
+  @include base-color($hover:blue,$normal:red,$visited:#f5f5f5)
+  font-size:15px;
 }
 ```
