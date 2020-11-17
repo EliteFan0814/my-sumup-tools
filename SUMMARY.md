@@ -7,7 +7,8 @@
   * [sass入门](css/sass.md)
 * [JS常用](js/README.md)
   * [常用JS函数](js/common-js.md)
-* [小程序总结](mini-programs.md)
+* [小程序](mini-programs.md)
+  * [常用小程序代码](js/mini.md)
 * [CSS易混淆](css-confused.md)
 
 
