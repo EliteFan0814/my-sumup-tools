@@ -90,7 +90,7 @@ input{
 \*这里注意左边的 key 值是否带分号，分号也算一个字符！  
 html 代码如下：
 
-```html
+```markup
   <div class="item-wrap">
     <div class="left-name">
       <div class="name">姓名</div>：
@@ -157,8 +157,4 @@ div{
  overflow-y: scroll;
 }
 ```
-
-
-
-
 

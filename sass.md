@@ -2,13 +2,13 @@
 description: sass文档总结
 ---
 
-# sass 文档总结
+# sass使用总结
 
-## \$ 符号声明变量
+## $ 符号声明变量
 
 sass 声明的变量值用作 css 的属性值
 
-```scss
+```css
 /*  声明变量 */
 $base-color: #fff;
 $base-font: italic arial, sans-serif;
@@ -25,7 +25,7 @@ div {
 
 ## sass 中中划线和下划线命名通用
 
-```scss
+```css
 /*  $link-color 和 $link_color 通用 */
 $link-color: blue;
 a {
@@ -36,9 +36,10 @@ a {
 ## sass 嵌套规则，是个人都能懂，但有注意事项
 
 1. 父选择器的标识符 &  
+
    sass 解嵌套是把父选择器通过空格连接子选择器，这在 css 中代表后代选择器，但是有时候我们不想要应用到所有后代
 
-```scss
+```css
 /*例如：*/
 article a {
   color: blue;
@@ -78,23 +79,25 @@ article a:hover {
 sass 的 @import 导入在生成 css 文件时就把相关文件导入进来  
 css 的 @important 是只有执行到@import 时，浏览器才会去下载要导入的 css 文件
 
-```scss
+```css
 /*可以省略.sass或.scss文件后缀*/
 @import 'colors';
 ```
 
 1. sass 的局部文件：指并不需要生成对应的独立 css 文件的 sass 文件，sass 有一个特殊的约定来命名这些文件
+
    以下划线开头,这样，sass 就不会在编译时单独编译这个文件输出 css，而只把这个文件用作导入
+
 2. @import 一个局部文件时,可以省略文件名开头的下划线
 
-```scss
+```css
 /*导入 themes/_night-sky.scss*/
 @import 'themes/night-sky';
 ```
 
-3. @import 可进行局部导入
+1. @import 可进行局部导入
 
-```scss
+```css
 /*base.scss 文件*/
 aside {
   background: blue;
@@ -113,14 +116,14 @@ aside {
 
 同一个变量出现的越晚优先级越高
 
-```scss
+```css
 // 最终值为 300px
 $base-width: 100px;
 $base-width: 200px;
 $base-width: 300px;
 ```
 
-```scss
+```css
 /* base.scss 内容*/
 $base-width: 100px;
 
@@ -138,7 +141,7 @@ $base-width: 100px;
 
 同上一个例子，但是加上了 !default
 
-```scss
+```css
 /* base.scss 内容*/
 $base-width: 100px !default;
 
@@ -154,7 +157,7 @@ $base-width: 200px;
 
 ## sass 静默注释
 
-/* ···· */ 是 css 的标准注释格式，对其他人直接可见  
+/ _····_ / 是 css 的标准注释格式，对其他人直接可见  
 // 在 sass 中使用 // 进行注释，其内容不会出现在生成的 css 文件中
 
 ## 混合器
@@ -163,7 +166,7 @@ $base-width: 200px;
 @mixin 用来定义一个混合器  
 @include 用来插入一个定义好的混合器
 
-```scss
+```css
 /* base.scss 内容*/
 $base-width: 100px !default;
 @mixin base-block {
@@ -186,12 +189,14 @@ $base-width: 200px;
 二者很像，都是给一大堆样式命名，最主要的区别是：
 
 1. 类名是应用在 html 中的，是具有语义的  
+
    混合器则是单纯用在样式表中描述外观的，没有语义
+
 2. 大量的引用混合器会导致生成的 css 代码量过大，影响加载
 
 所以混合器和类名的配合使用，才能写出整洁的 html 和 css
 
-```scss
+```css
 /*只包含规则的混合器*/
 @mixin base-block {
   width: 10px;
@@ -209,9 +214,12 @@ $base-width: 200px;
   }
 }
 ```
+
 ## 混合器传参
+
 和 javascript 的 function 函数几乎一模一样的用法，可以给参数赋默认值
-```scss
+
+```css
 /* 定义一个混合器 */
 @mixin base-color($normal,$hover:red,$visited:#f5f5f5){
   color:$normal;
@@ -235,3 +243,4 @@ $base-width: 200px;
   font-size:15px;
 }
 ```
+
