@@ -2,7 +2,7 @@
 description: CSS常用样式集合
 ---
 
-# CSS常用
+# CSS
 
 ## 单行/多行省略：
 
