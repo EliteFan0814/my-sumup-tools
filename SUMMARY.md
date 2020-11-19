@@ -9,5 +9,7 @@
   * [常用JS函数](js/common-js.md)
 * [小程序](mini/README.md)
   * [常用小程序代码](mini/mini.md)
+* [VUE](vue/README.md)
+  *[VUE小技巧](vue/vue-trick.md)
 
 
