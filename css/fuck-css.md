@@ -23,11 +23,11 @@ description: 坑爹的CSS
 }
 ```
 再来一个更直观的例子：  
-![nth-child.png](https://i.loli.net/2020/11/24/Z3nCsTNDeUL4XKt.png)
+![nth-child.png](https://i.loli.net/2020/11/24/Z3nCsTNDeUL4XKt.png){: width="100%"}
 
 ## :first-child和:last-child
 类似于 :nth-child 需满足如下条件：  
 1. 该元素属于这个类名  
 2. 该元素是其父元素下的首个或最后一个子元素  
 直观的例子：  
-![first-child.png](https://i.loli.net/2020/11/24/TkSg9hw43CWbXPv.png)
+![first-child.png](https://i.loli.net/2020/11/24/TkSg9hw43CWbXPv.png){: width="100%"}
