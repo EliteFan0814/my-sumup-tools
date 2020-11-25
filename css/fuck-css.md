@@ -2,7 +2,7 @@
 description: 坑爹的CSS
 ---
 
-# 坑爹的CSS
+# 坑爹的 CSS
 
 ## :nth-child\(an+b\)
 
@@ -12,7 +12,7 @@ description: 坑爹的CSS
 如下 css：
 
 1. 对当前元素的和当前元素的所有兄弟元素进行排序
-2. 同时满足顺序是 an+b 且类名是 course-item 的元素  
+2. 同时满足顺序是 an+b 且类名是 course-item 的元素
 
    才能应用背景色是 f5f5f5 的样式
 
@@ -26,16 +26,15 @@ description: 坑爹的CSS
 }
 ```
 
-再来一个更直观的例子：  
-
+再来一个更直观的例子：
 
 ![例子](https://i.loli.net/2020/11/24/Z3nCsTNDeUL4XKt.png)
 
-## :first-child和:last-child
+## :first-child 和:last-child
 
-类似于 :nth-child 需满足如下条件：  
-1. 该元素属于这个类名  
+类似于 :nth-child 需满足如下条件：
+
+1. 该元素属于这个类名
 2. 该元素是其父元素下的首个或最后一个子元素  
-直观的例子：  
-![例子](https://i.loli.net/2020/11/24/TkSg9hw43CWbXPv.png)
-
+   直观的例子：  
+   ![例子](https://i.loli.net/2020/11/24/TkSg9hw43CWbXPv.png)
