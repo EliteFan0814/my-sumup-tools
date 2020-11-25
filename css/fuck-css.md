@@ -29,7 +29,7 @@ description: 坑爹的CSS
 再来一个更直观的例子：  
 
 
-![&#x56FE;&#x7247;&#x66FF;&#x6362;&#x6587;&#x672C;](https://i.loli.net/2020/11/24/Z3nCsTNDeUL4XKt.png)
+![例子](https://i.loli.net/2020/11/24/Z3nCsTNDeUL4XKt.png)
 
 ## :first-child和:last-child
 
@@ -39,5 +39,5 @@ description: 坑爹的CSS
 直观的例子：  
 
 
-![&#x56FE;&#x7247;&#x66FF;&#x6362;&#x6587;&#x672C;](https://i.loli.net/2020/11/24/TkSg9hw43CWbXPv.png)
+![例子](https://i.loli.net/2020/11/24/TkSg9hw43CWbXPv.png)
 
