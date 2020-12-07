@@ -6,7 +6,7 @@
 
 ## 将一个数组分为多个数组
 
-示例：\[1,2,3,4,5,6,7,8,9,10\] =&gt; \[\[1, 2, 3, 4\], \[5, 6, 7, 8\], \[9, 10\]\]
+示例：[1,2,3,4,5,6,7,8,9,10] 转换为 [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10]]
 
 ```javascript
 const sliceArray = function (targetArray, number) {
@@ -37,7 +37,7 @@ const limitToNumberStr = function (valStr) {
 
 ### 方式 1
 
-示例：{userName:'elite',local:'china'} =&gt;\[{name:'userName',value:'elite'},{name:'local',value:'china'}\]
+示例：{ userName : 'elite' , local : 'china' } 转换为 [{ name : 'userName' , value : 'elite' } , { name : 'local' , value : 'china' }]
 
 ```javascript
 const objTransToArray = function (obj) {
@@ -54,7 +54,7 @@ const objTransToArray = function (obj) {
 
 ### 方式 2
 
-示例：{userName:'elite',local:'china'} =&gt;\[{userName:'elite'},{local:'china'}\]
+示例：{ userName : 'elite' , local : 'china' } 转换为 [{ userName : 'elite' } , { local : 'china' }]
 
 ```javascript
 const objTransToArray = function (obj) {
@@ -119,4 +119,11 @@ const checkdataType = function (yourData) {
       return '未知类型：' + type
   }
 }
+```
+## 巧用window.open
+不想使用 a 标签破环样式结构的话，可以使用 window.open 实现部分常用功能  
+`window.open(URL,name,specs,replace)`
+```js
+//  在当前页面显示拨打电话
+window.open('tel:15000000000','_self')
 ```
