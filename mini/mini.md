@@ -59,7 +59,8 @@ wx.getSystemInfoSync().windowWidth 单位为 px
 有时候自定义小程序导航条会遇到刘海/非刘海手机显示不一的问题  
 先来看一下微信官方设计稿中的距离：  
 
-![胶囊按钮距离](https://i.loli.net/2020/12/07/8Bpvt1iVZ6dHKG3.png)  
+![胶囊按钮距离](https://i.loli.net/2020/12/07/8Bpvt1iVZ6dHKG3.png)
+
 可以得出：  
 胶囊按钮顶部边界距离手机状态栏底部边界的距离是 6px  
 胶囊按钮右部边界距离手机屏幕右侧留白安全距离是 6px
