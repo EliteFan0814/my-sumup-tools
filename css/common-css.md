@@ -155,3 +155,43 @@ div {
   overflow-y: scroll;
 }
 ```
+
+## 固定 div/图片宽高比
+有时候需要固定div或者图片的宽高比例  
+块级元素（如div,p）的padding设置为百分比的时候，是按照父元素的宽度来定的，  
+可以利用这一特性，使用padding-top/padding-bottom来设置容器高度
+
+![代码示例图片](https://i.loli.net/2020/12/15/Dt1sCIWx4wV9Zzn.png)
+
+```html
+<div class="wrap">
+  <div class="img-wrap">
+  <!-- 使用 4:9 的图片填充4:3的包裹器 -->
+    <img src="https://dummyimage.com/400x900/000/fff" alt="" />
+  </div>
+  <div class="img-wrap">
+  <!-- 使用 4:3 的图片填充4:3的包裹器 -->
+    <img src="https://dummyimage.com/400x300/000/fff" alt="" />
+  </div>
+</div>
+```
+
+```scss
+.wrap {
+  border: 1px solid green;
+}
+.img-wrap {
+  border: 1px solid red;
+  position: relative;
+  margin: 0 20px;
+  width: calc(100% - 40px); // 宽度为 父元素总长 - 40px
+  height: 0;
+  padding-bottom: calc((100% - 40px) * 0.75); // 高度为 (父元素总长 - 40px) * 0.75 也就是宽高比为 4:3
+  overflow: hidden;
+}
+img {
+  position: absolute; // 开启定位让 img 以 4:3 的的比例填充 img-wrap 包裹器（可能会引起图片变形）
+  width: 100%;
+  height: 100%;
+}
+```
