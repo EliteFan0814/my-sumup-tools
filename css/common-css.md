@@ -157,20 +157,23 @@ div {
 ```
 
 ## 固定 div/图片宽高比
-有时候需要固定div或者图片的宽高比例  
-块级元素（如div,p）的padding设置为百分比的时候，是按照父元素的宽度来定的，  
-可以利用这一特性，使用padding-top/padding-bottom来设置容器高度
+
+有时候需要固定 div 或者图片的宽高比例  
+块级元素（如 div,p）的 padding 设置为百分比的时候，是按照父元素的宽度来定的，  
+可以利用这一特性，使用 padding-top/padding-bottom 来设置容器高度
 
 ![代码示例图片](https://i.loli.net/2020/12/15/Dt1sCIWx4wV9Zzn.png)
+
+以下为代码：
 
 ```html
 <div class="wrap">
   <div class="img-wrap">
-  <!-- 使用 4:9 的图片填充4:3的包裹器 -->
+    <!-- 使用 4:9 的图片填充4:3的包裹器 -->
     <img src="https://dummyimage.com/400x900/000/fff" alt="" />
   </div>
   <div class="img-wrap">
-  <!-- 使用 4:3 的图片填充4:3的包裹器 -->
+    <!-- 使用 4:3 的图片填充4:3的包裹器 -->
     <img src="https://dummyimage.com/400x300/000/fff" alt="" />
   </div>
 </div>
