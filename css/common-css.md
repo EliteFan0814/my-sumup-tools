@@ -182,22 +182,22 @@ div {
 ```scss
 .wrap {
   border: 1px solid green;
-}
-.img-wrap {
-  border: 1px solid red;
-  position: relative;
-  margin: 0 20px;
-  // 宽度为 父元素总长 - 40px
-  width: calc(100% - 40px); 
-  height: 0;
-  // 高度为 (父元素总长 - 40px) * 0.75 也就是宽高比为 4:3
-  padding-bottom: calc((100% - 40px) * 0.75); 
-  overflow: hidden;
-}
-img {
-  // 开启定位让 img 以 4:3 的的比例填充 img-wrap 包裹器（可能会引起图片变形）
-  position: absolute; 
-  width: 100%;
-  height: 100%;
+  .img-wrap {
+    border: 1px solid red;
+    position: relative;
+    margin: 0 20px;
+    // 宽度为 父元素总长 - 40px
+    width: calc(100% - 40px);
+    height: 0;
+    // 高度为 (父元素总长 - 40px) * 0.75 也就是宽高比为 4:3
+    padding-bottom: calc((100% - 40px) * 0.75);
+    overflow: hidden;
+    img {
+      // 开启定位让 img 以 4:3 的的比例填充 img-wrap 包裹器（可能会引起图片变形）
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+  }
 }
 ```
