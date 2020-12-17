@@ -148,3 +148,11 @@ window.open('tel:15000000000', '_self')
       document.body.removeChild(aLink) //点击完成后记得删除创建的链接
     },
 ```
+
+## js 获取 div 宽高
+
+```js
+const o = document.getElementById('view')
+const height = o.offsetHeight
+const width = o.offsetWidth
+```
