@@ -37,7 +37,8 @@ const limitToNumberStr = function (valStr) {
 
 ### 方式 1
 
-示例：{ userName : 'elite' , local : 'china' } 转换为 [{ name : 'userName' , value : 'elite' } , { name : 'local' , value : 'china' }]
+示例：{ userName : 'elite' , local : 'china' } 转换为 [{ name : 'userName' , value : 'elite' } , { name : 'local' ,
+value : 'china' }]
 
 ```javascript
 const objTransToArray = function (obj) {
@@ -120,10 +121,30 @@ const checkdataType = function (yourData) {
   }
 }
 ```
-## 巧用window.open
+
+## 巧用 window.open
+
 不想使用 a 标签破环样式结构的话，可以使用 window.open 实现部分常用功能  
 `window.open(URL,name,specs,replace)`
+
 ```js
 //  在当前页面显示拨打电话
-window.open('tel:15000000000','_self')
+window.open('tel:15000000000', '_self')
+```
+
+## 当前页点击下载
+
+有时候后台管理需要导出功能，a 标签默认会打开新页面，此方法使用 dom 操作在当前页面创建下载链接并点击下载
+
+```js
+ //下载任务文件事件
+    downloadFilse(url, name) {
+      const aLink = document.createElement('a') //创建a链接
+      aLink.style.display = 'none'
+      aLink.href = url
+      aLink.download = name
+      document.body.appendChild(aLink)
+      aLink.click()
+      document.body.removeChild(aLink) //点击完成后记得删除创建的链接
+    },
 ```
