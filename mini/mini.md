@@ -57,7 +57,7 @@ wx.getSystemInfoSync().windowWidth 单位为 px
 ## 顶部安全距离
 
 有时候自定义小程序导航条会遇到刘海/非刘海手机显示不一的问题  
-先来看一下微信官方设计稿中的距离：  
+先来看一下微信官方设计稿中的距离：
 
 ![胶囊按钮距离](https://i.loli.net/2020/12/07/8Bpvt1iVZ6dHKG3.png)
 
@@ -73,7 +73,7 @@ globalData: {
 }
 ```
 
-这样在单个 page 文件中就能动态获取胶囊按钮距离手机屏幕顶部的距离了。根据这个距离来自定义小程序导航条：  
+这样在单个 page 文件中就能动态获取胶囊按钮距离手机屏幕顶部的距离了。根据这个距离来自定义小程序导航条：
 
 ![胶囊按钮距离](https://i.loli.net/2020/12/07/YlXshuBEreo9FDP.png)
 
@@ -87,4 +87,76 @@ globalData: {
     }
   })
 </script>
+```
+
+## 轮播图自适应图片高度
+
+若小程序原生 swiper 组件中的轮播图图片高度不一致，而且还需要宽度占满 750rpx，等比例完全展示，则图片高度就需要使用 js 动
+态获取
+
+```html
+<swiper
+  autoplay="{{true}}"
+  interval="{{5000}}"
+  duration="{{500}}"
+  bindchange="handleChange"
+  style="height:{{imgheights[current]}}rpx;"
+  class="swiper"
+>
+  <block wx:for="{{imgUrls}}" wx:key="*this">
+    <swiper-item class="swiper-item">
+      <view class="block">{{index+1}}/{{imgUrls.length}}</view>
+      <image
+        data-src="{{item}}"
+        data-id="{{index}}"
+        mode="widthFix"
+        class="swiper-image"
+        src="{{item}}"
+        bindload="imageLoad"
+      />
+    </swiper-item>
+  </block>
+</swiper>
+```
+
+```js
+Page({
+  data: {
+    imgUrls: [],
+    //所有图片的高度
+    imgheights: [],
+    // 当前 active
+    current: 0
+  },
+  // 处理加载的图片
+  imageLoad: function (e) {
+    //获取图片真实宽度
+    let imgwidth = e.detail.width,
+      imgheight = e.detail.height,
+      //计算宽高比
+      ratio = imgwidth / imgheight
+    //计算的高度值
+    let viewHeight = 750 / ratio
+    let imgheight = viewHeight
+    let imgheights = this.data.imgheights
+    //把每一张图片的对应的高度记录到数组里
+    imgheights[e.target.dataset.id] = imgheight
+    this.setData({
+      imgheights: imgheights
+    })
+  },
+  handleChange: function (e) {
+    this.setData({
+      current: e.detail.current
+    })
+  }
+})
+```
+
+```css
+/* 加入过渡动画 */
+.swiper {
+  height: 0;
+  transition: all 0.3s;
+}
 ```
