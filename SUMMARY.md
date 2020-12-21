@@ -11,4 +11,6 @@
   * [常用小程序代码](mini/mini.md)
 * [VUE](vue/README.md)
   * [VUE小技巧](vue/vue-trick.md)
+* [Git](git/README.md)
+  * [Git常用命令](git/common-git.md)
 
