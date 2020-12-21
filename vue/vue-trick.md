@@ -38,3 +38,23 @@
 
 这里 handleInput 只能接收一个参数  
 箭头函数方式则可以传递更多参数
+
+## jsconfig.json
+
+vscode 使用 vetur 插件会弹出不存在 tsconfig.json 或者 jsconfig.json 文件，前者针对 Ts 项目，后者针对普通 js 项目，在项目
+根目录新建 jsconfig.json 文件就行  
+jsconfig.json 文件内容结构如下：
+
+```json
+{
+  "compilerOptions": {
+    "target": "es2015",
+    "module": "esnext",
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "include": ["src/**/*.vue", "src/**/*.js"]
+}
+```
