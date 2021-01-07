@@ -156,3 +156,19 @@ const o = document.getElementById('view')
 const height = o.offsetHeight
 const width = o.offsetWidth
 ```
+
+## js 时间处理
+
+传入一个合法的 date 格式时间数据，返回 [YY, MM, DD, HH, mm, ss]，默认返回当前时间的数组格式
+
+```js
+const formatDate = function (date = new Date()) {
+  const YY = date.getFullYear() + ''
+  const MM = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + ''
+  const DD = date.getDate() < 10 ? '0' + date.getDate() : date.getDate() + ''
+  const HH = date.getHours() < 10 ? '0' + date.getHours() : date.getHours() + ''
+  const mm = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes() + ''
+  const ss = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds() + ''
+  return [YY, MM, DD, HH, mm, ss]
+}
+```
