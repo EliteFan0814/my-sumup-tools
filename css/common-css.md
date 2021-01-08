@@ -132,14 +132,18 @@ css 代码：
 
 ## 隐藏滚动条
 
-```css
+```scss
 div {
   width: 24rem;
   height: 20rem;
   overflow: scroll;
-}
-div::-webkit-scrollbar {
-  display: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  /* IE10+ */
+  -ms-overflow-style: none;
+  /* firefox */
+  overflow: -moz-scrollbars-none;
 }
 ```
 

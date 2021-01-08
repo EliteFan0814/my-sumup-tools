@@ -142,3 +142,20 @@ const formatDate = function (date = new Date()) {
   return { YY, MM, DD, HH, mm, ss }
 }
 ```
+
+## 更新对象属性值
+
+在不给目标对象增加新的属性的同时更新目标对象属性值
+
+```js
+const updateObj = function (target, source) {
+  const keys = Object.keys(target)
+  // const merge = Object.assign(target, source) 此方法会直接改变 target 对象
+  const merge = { ...target, ...source }
+  const temp = {}
+  keys.map((item, index) => {
+    temp[item] = merge[item]
+  })
+  return temp
+}
+```
