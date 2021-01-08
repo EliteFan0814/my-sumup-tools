@@ -201,3 +201,41 @@ div {
   }
 }
 ```
+
+## 不同比例图标的统一显示
+
+有时候界面会用循环来做一个点击列表，列表每一项一般会有小图标，但是每一项的图标比例可能并不一致，这时候就需要让它们根据自
+身比例动态调节。  
+如下示例图，不同尺寸的 icon 都会按自身比例显示在同样大小的红框中而不会变形：
+
+![示例图](https://i.loli.net/2021/01/08/rsxz4Y5QlB3Wpgn.png)
+
+```html
+<div class="img-wrap">
+  <img src="https://dummyimage.com/300x400/000/fff&text=icon1" alt="" />
+</div>
+<div class="img-wrap">
+  <img src="https://dummyimage.com/500x300/000/fff&text=icon2" alt="" />
+</div>
+<div class="img-wrap">
+  <img src="https://dummyimage.com/600x200/000/fff&text=icon3" alt="" />
+</div>
+<div class="img-wrap">
+  <img src="https://dummyimage.com/700x500/000/fff&text=icon4" alt="" />
+</div>
+```
+
+```css
+.img-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 150px;
+  border: 1px solid red;
+}
+img {
+  max-width: 150px;
+  max-height: 150px;
+}
+```
