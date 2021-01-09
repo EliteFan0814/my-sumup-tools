@@ -13,4 +13,6 @@
   * [VUE小技巧](vue/vue-trick.md)
 * [Git](git/README.md)
   * [Git常用命令](git/common-git.md)
+* [npm和Node](npmNode/README.md)
+  * [package.json与package-lock.json](npmNode/packageAndLock.md)
 
