@@ -2,7 +2,7 @@
 
 关于版本号的详细信息可查看[semver](https://semver.org/)，这里简要说明一下，例如 npm5.2.1,  
 5 是主版本号， 2 是次版本号，1 是 bug 修复版本  
-打开 package.json 文件我们会看到类似这样的版本号` "@vant/weapp": "^1.6.4"`  
+打开 package.json 文件我们会看到类似这样的版本号` "@vant/weapp": "^1.6.4"`
 
 除了 `^`符号，还有`~`符号  
 `^`表示匹配当前主版本号下的大于当前版本号的最新次版本号，例如：  
@@ -23,13 +23,19 @@ package-lock.json 就是用来解决上述问题的。npm V5.xx 以后会自动�
 npm V5.xx 中同时存在 package.json 与 package-lock.json，新的问题又出现了，二者谁的优先级更高，需不需要提交
 package-lock.json？ 不说废话，npm 官方几经更新周折之后，最终结果是：
 
-1.  需要上传 package-lock.json。
+1.  官方建议上传 package-lock.json。
 2.  如果 package.json 和 package-lock.json 文件不一致，则执行 npm install 时会根据 package.json 中的版本号和语义安装依赖
     ，并更新至 package-lock.json 。如果二者一致，则执行 npm install 时会根据 package-lock.json 进行安装。
 
+打个比方，  
+package-lock.json 是老公  
+package.json 是老婆  
+老公和老婆意见一致时，听老公的，意见不一致时，听老婆的。
+
 npm init 时只会生成 package.json 文件 npm install 时会生成 package-lock.json 文件
 
-### 参考博文
+## 参考博文
 
+> [package-lock.json 官方文档](https://docs.npmjs.com/cli/v6/configuring-npm/package-lock-json)  
 > [package.json Vs package-lock.json](https://dltlabs.medium.com/package-json-vs-package-lock-json-c8d5deba12cb)  
 > [Everything You Wanted To Know About package-lock.json But Were Too Afraid To Ask](https://medium.com/coinmonks/everything-you-wanted-to-know-about-package-lock-json-b81911aa8ab8)
