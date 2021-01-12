@@ -1,13 +1,13 @@
-## package.json 中的版本号
+## 先讲一下 package.json 中的版本号
 
 关于版本号的详细信息可查看[semver](https://semver.org/)，这里简要说明一下，例如 npm5.2.1,  
 5 是主版本号， 2 是次版本号，1 是 bug 修复版本  
 打开 package.json 文件我们会看到类似这样的版本号` "@vant/weapp": "^1.6.4"`
 
 除了 `^`符号，还有`~`符号  
-`^`表示匹配当前主版本号下的大于当前版本号的最新次版本号，例如：  
+`^`表示执行 `npm install` 时，匹配当前主版本号下的大于当前版本号的最新次版本号，例如：  
 **"@vant/weapp": "^1.6.4"表示：匹配安装 ["1.6.4","2.0.0") 之间的最新版本号**  
-`~`表示匹配当前**大 小** 版本号下的最新 bug 修复版，例如：  
+`~`表示执行 `npm install` 时，匹配当前**主版本 和 次版本** 号下的最新 bug 修复版，例如：  
 **"@vant/weapp": "~1.6.4"表示：匹配安装 ["1.6.4"至"1.7.0") 之间的最新版本号**  
 无符号则表示安装指定版本号，例如：  
 **"@vant/weapp": "1.6.4"表示：安装版本号为"1.6.4"的版本**
@@ -18,7 +18,7 @@ package.json 里，过了段时间，我的同事周星星修改我的项目，�
 出现了。  
 package-lock.json 就是用来解决上述问题的。npm V5.xx 以后会自动创建 package-lock.json 文件。
 
-## package.json 与 package-lock.json
+## 再比较 package.json 与 package-lock.json
 
 npm V5.xx 中同时存在 package.json 与 package-lock.json，新的问题又出现了，二者谁的优先级更高，需不需要提交
 package-lock.json？ 不说废话，npm 官方几经更新周折之后，最终结果是：
