@@ -129,7 +129,9 @@ const width = o.offsetWidth
 
 ## js 时间处理
 
-传入一个合法的 date 格式时间数据，返回 {YY, MM, DD, HH, mm, ss}，默认返回当前时间的对象格式
+1. 方法 1：  
+    传入一个合法的 date 格式时间数据，返回 {YY, MM, DD, HH, mm, ss}，默认返回当前时间的对象格式  
+    例如：`formatDate(new Date())`返回对象：{ YY: '2021', MM: '01', DD: '12', HH: '09', mm: '56', ss: '55' }
 
 ```js
 const formatDate = function (date = new Date()) {
@@ -140,6 +142,26 @@ const formatDate = function (date = new Date()) {
   const mm = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes() + ''
   const ss = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds() + ''
   return { YY, MM, DD, HH, mm, ss }
+}
+```
+
+2. 方法 2：  
+   返回类似 "2021/01/12 09:48:04" 格式的时间字符串
+
+```js
+const formatNumber = (n) => {
+  n = n.toString()
+  return n[1] ? n : `0${n}`
+}
+const formatTime = (date) => {
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  const hour = date.getHours()
+  const minute = date.getMinutes()
+  const second = date.getSeconds()
+
+  return `${[year, month, day].map(formatNumber).join('/')} ${[hour, minute, second].map(formatNumber).join(':')}`
 }
 ```
 
