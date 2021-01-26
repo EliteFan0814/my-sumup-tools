@@ -160,3 +160,16 @@ Page({
   transition: all 0.3s;
 }
 ```
+
+## 富文本控制图片样式
+
+```html
+<style>
+  .rich-img {
+    width: 100%;
+  }
+</style>
+<script>
+  const temp = content.replace(/\<img/gi, '<img class="rich-img" ')
+</script>
+```

@@ -25,3 +25,23 @@ git branch -d branchName
 删除远程分支
 git push origin --delete branchName
 ```
+
+## 创建新仓库
+
+```bash
+echo "# base-weapp-components" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin git@github.com:EliteFan0814/base-weapp-components.git
+git push -u origin main
+```
+
+## 存入已有仓库
+
+```bash
+git remote add origin git@github.com:EliteFan0814/base-weapp-components.git
+git branch -M main
+git push -u origin main
+```
