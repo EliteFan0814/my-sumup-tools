@@ -58,3 +58,14 @@ jsconfig.json 文件内容结构如下：
   "include": ["src/**/*.vue", "src/**/*.js"]
 }
 ```
+
+## 根据不同环境切换地址
+
+```js
+// environment.js
+const isDev = process.env.NODE_ENV == 'development'
+export default {
+  excelPath: isDev ? 'http://local.host.com/' : 'http://eliteFan.com/',
+  downloadPath: isDev ? 'http://local.host.com/' : 'http://eliteFan.com/'
+}
+```
