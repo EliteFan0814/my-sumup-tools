@@ -173,3 +173,28 @@ Page({
   const temp = content.replace(/\<img/gi, '<img class="rich-img" ')
 </script>
 ```
+
+## 小程序复制
+
+```js
+copyText(e) {
+    wx.setClipboardData({
+      data: e.currentTarget.dataset.text,
+      success: function (res) {
+        wx.getClipboardData({
+          success: function (res) {
+            wx.showToast({
+              title: '复制成功'
+            })
+          }
+        })
+      },
+      fail: function (res) {
+        wx.showToast({
+          title: '复制失败',
+          icon: 'none'
+        })
+      }
+    })
+  }
+```

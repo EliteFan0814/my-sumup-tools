@@ -130,8 +130,8 @@ const width = o.offsetWidth
 ## js 时间处理
 
 1. 方法 1：  
-    传入一个合法的 date 格式时间数据，返回 {YY, MM, DD, HH, mm, ss}，默认返回当前时间的对象格式  
-    例如：`formatDate(new Date())`返回对象：{ YY: '2021', MM: '01', DD: '12', HH: '09', mm: '56', ss: '55' }
+   传入一个合法的 date 格式时间数据，返回 {YY, MM, DD, HH, mm, ss}，默认返回当前时间的对象格式  
+   例如：`formatDate(new Date())`返回对象：{ YY: '2021', MM: '01', DD: '12', HH: '09', mm: '56', ss: '55' }
 
 ```js
 const formatDate = function (date = new Date()) {
@@ -179,5 +179,15 @@ const updateObj = function (target, source) {
     temp[item] = merge[item]
   })
   return temp
+}
+```
+
+## 删除数组某一项
+
+index 从 0 开始
+
+```js
+const deleteItem = function (index, arr) {
+  arr.splice(index, 1)
 }
 ```
