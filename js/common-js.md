@@ -191,3 +191,12 @@ const deleteItem = function (index, arr) {
   arr.splice(index, 1)
 }
 ```
+
+## 获取文件类型
+
+```js
+//  方法1
+const fileType = fileName.substring(fileName.lastIndexOf('.') + 1)
+//  方法2
+const fileType = fileName.split('.').pop().toLowerCase()
+```

@@ -198,3 +198,13 @@ copyText(e) {
     })
   }
 ```
+
+## 隐藏竖向滚动条
+
+```css
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+```

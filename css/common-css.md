@@ -6,15 +6,14 @@ description: CSS常用样式集合
 
 ```css
 /*单行省略*/
-.single-lines-omit {
-  width: 27em;
+.omit-1 {
   white-space: nowrap;
   text-overflow: ellipsis;
   -o-text-overflow: ellipsis;
   overflow: hidden;
 }
 /*多行省略*/
-.multiple-lines-omit {
+.omit-3 {
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 3;
