@@ -53,7 +53,7 @@
 <script>
   const input = document.getElementById('up-img')
   input.addEventListener('change', function (e) {
-    console.log(e.target.files)
+    console.log(e.target.files) // 等价于 console.log(input.value)，返回的是一个 FileList 对象
     const upInfo = e.target.files[0]
     const upForm = new FormData()
     upForm.append('file', upInfo)
@@ -62,3 +62,6 @@
   })
 </script>
 ```
+
+**补充：** 文件选择器`<input type="file">`，出于安全考虑，浏览器不允许脚本自行设置这个控件的 value 属性，即文件必须是用
+户手动选取的，不能是脚本指定的。一旦用户选好了文件，脚本就可以读取这个文件，返回一个 FileList 对象，每个成员都是一个 File 实例对象。File 实例对象是一个特殊的 Blob 实例，增加了name和lastModifiedDate属性。
