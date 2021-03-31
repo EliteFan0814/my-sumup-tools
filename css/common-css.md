@@ -205,6 +205,32 @@ div {
 }
 ```
 
+## 1：1 显示不同比例图片
+
+![1v1.png](https://i.loli.net/2021/03/31/bdrQ9xX71yfH5vI.png)
+
+```html
+<div class="img-wrap">
+  <img src="https://img2.baidu.com/it/u=1612138888,1794405442&fm=26&fmt=auto&gp=0.jpg" alt="" />
+</div>
+```
+
+```scss
+.img-wrap {
+  position: relative;
+  width: 50%;
+  height: 0;
+  padding-bottom: 50%;
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+```
+
 ## 不同比例图标的统一显示
 
 有时候界面会用循环来做一个点击列表，列表每一项一般会有小图标，但是每一项的图标比例可能并不一致，这时候就需要让它们根据自
