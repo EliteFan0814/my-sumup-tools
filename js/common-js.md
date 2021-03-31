@@ -200,3 +200,20 @@ const fileType = fileName.substring(fileName.lastIndexOf('.') + 1)
 //  方法2
 const fileType = fileName.split('.').pop().toLowerCase()
 ```
+
+## 复制文字
+
+```js
+function copy(targetValue) {
+  let transfer = document.createElement('input')
+  document.body.appendChild(transfer)
+  transfer.value = targetValue // 这里表示想要复制的内容
+  transfer.focus()
+  transfer.select()
+  if (document.execCommand('copy')) {
+    document.execCommand('copy')
+  }
+  transfer.blur()
+  document.body.removeChild(transfer)
+}
+```
