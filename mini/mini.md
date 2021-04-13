@@ -233,7 +233,21 @@ handleCurrentPage(){
         // to do
       }
 }
+```
 
+有时从 B 页面做完某个操作返回 A 页面时需要更新 A 页面的某些数据，使用 A 页面中的 onShow 生命周期太 low, 可以使用小程序提
+供的路由函数的 success 回掉来处理更新 A 页面数据，例如：
+
+```js
+wx.navigateBack({
+  delta: 1,
+  success: function () {
+    const page = getCurrentPages().pop()
+    if (page == undefined || page == null) return
+    page.getUserInfo()
+    page.getRewardList()
+  }
+})
 ```
 
 ## 刷新上个页面数据
