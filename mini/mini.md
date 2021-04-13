@@ -221,3 +221,28 @@ copyText(e) {
   color: transparent;
 }
 ```
+
+## 获取当前页面
+
+```js
+handleCurrentPage(){
+  const page = getCurrentPages().pop()
+      if (page == undefined || page == null) return
+      // 如果当前页面是 pages/regist/regist
+      if (page.route !== 'pages/regist/regist') {
+        // to do
+      }
+}
+
+```
+
+## 刷新上个页面数据
+
+```js
+refreshPrePage(){
+  const pages = getCurrentPages()
+  const beforePage = pages[pages.length - 2]
+  // 对上个页面数据进行操作
+  beforePage.refreshData()
+}
+```
