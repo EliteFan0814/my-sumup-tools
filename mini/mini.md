@@ -199,6 +199,19 @@ copyText(e) {
   }
 ```
 
+## 拨打电话
+
+```js
+  makeCall(e) {
+    const { phone } = app.tapData(e)
+    wx.makePhoneCall({
+      phoneNumber: phone,
+      success() {},
+      fail() {}
+    })
+  },
+```
+
 ## 隐藏竖向滚动条
 
 ```css
