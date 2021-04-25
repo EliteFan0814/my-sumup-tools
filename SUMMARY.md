@@ -17,4 +17,5 @@
   * [Git 小tips](git/tips-git.md)
 * [npm和Node](npmNode/README.md)
   * [package.json与package-lock.json](npmNode/packageAndLock.md)
+  * [VIM](vim/README.md)
 
