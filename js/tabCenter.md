@@ -3,7 +3,7 @@
 能够左右滑动的 tabs 标签页，有时候需要将处于 active 状态的 tab 居中显示，效果如下
 
 ![tab居中效果图](https://i.loli.net/2021/04/28/A3UyfzgYe29BRap.png)
-
+[在线查看](https://jsbin.com/lopiyutuxa/16/edit?html,css,js,output)  
 html 文件如下：
 
 ```html
