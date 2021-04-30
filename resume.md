@@ -21,7 +21,7 @@
 
 vue-admin-template 的 角色必须是一个非空的数组， 比如：`['admin'] ['admin','editor','manager']` 咱们自己的项目有些没有角
 色管理，有些带角色管理返回的可能只是一个简单的 roleType 字符串，这种情况直接跟后端说，好添加 就添加一个字段，不好添加，
-前段根据返回信息自己造个数组就行了。 vue-admin-template 的角色是哦通过 getInfo 获取的，咱们 可能登录的时候就给了，这个我
+前端根据返回信息自己造个数组就行了。 vue-admin-template 的角色是哦通过 getInfo 获取的，咱们 可能登录的时候就给了，这个我
 都在关键部分做了注释，根据情况灵活运用。
 
 ![getinfo.png](https://i.loli.net/2021/04/30/o8eKvTwHYkyVU75.png)
@@ -42,6 +42,12 @@ props 传值，不要直接修改自组件中的 props 属性值，要在子组�
 
 比 webpack 相比已经简洁了非常多，推荐没事的时候看一遍  
  [vue.config.js](https://cli.vuejs.org/zh/config/)
+
+#### 请求封装
+
+基本上都是基于[axios](https://axios-http.com/zh/docs/intro)进行的二次封装，  
+**请一定先读一遍官方文档**  
+所有的接口都封装在了`src/api` 文件夹，也建议大家把所有的接口都放在这里，不要在每一个单独页面中使用，后期不好修改维护
 
 #### eslint 的使用
 
