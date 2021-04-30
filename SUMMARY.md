@@ -22,3 +22,4 @@
   - [ESLint](frontendTools/eslint.md)
 - [VIM](vim/README.md)
   - [vim 常用](vim/common-vim.md)
+- [resume](resume.md)
