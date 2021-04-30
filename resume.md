@@ -35,8 +35,13 @@ vue-admin-template 的 角色必须是一个非空的数组， 比如：`['admin
 弹框的主要问题就是子组件的生命周期和 props 属性传递出现问题常见的控制子组件显示隐藏的方式有$refs 和 v-if ，这里咱们使 用
 v-if 来控制子组件的显示隐藏，这样的一个好处是子组件会有完整的生命周期，会杜绝一些比较恶心的 bug。
 
-props 传值，不要直接修改自组件中的 props 属性值，要在子组件的 data 里重新定义一个属性，将 props 中的值赋值给 data 中对
-应的属性。
+props 传值，不要直接修改自组件中的 props 属性值，要在子组件的 data 里重新定义一个属性，将 props 中的值赋值给 data 中对应
+的属性。
+
+#### 熟悉 vue.config.js 文档
+
+比 webpack 相比已经简洁了非常多，推荐没事的时候看一遍  
+ [vue.config.js](https://cli.vuejs.org/zh/config/)
 
 #### eslint 的使用
 
