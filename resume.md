@@ -15,15 +15,15 @@
    3. 根据角色来动态生成路由
    4. 渲染左侧路由列表
 
-      ![router-beforeEach.png](https://i.loli.net/2021/04/30/gBEIrXvCFmJtfaQ.png)
+![router-beforeEach.png](https://i.loli.net/2021/04/30/gBEIrXvCFmJtfaQ.png)
 
-      vue-admin-template 的 角色必须是一个非空的数组，  
-       比如：`['admin'] ['admin','editor','manager']`  
+      vue-admin-template 的 角色必须是一个非空的数组，
+       比如：`['admin'] ['admin','editor','manager']`
        咱们自己的项目有些没有角色管理，有些带角色管理返回的可能只是一个简单的 roleType 字符串，这种情况直接跟后端说，好
       添加 就添加一个字段，不好添加，前段根据返回信息自己造个数组就行了。 vue-admin-template 的角色是哦通过 getInfo 获取
       的，咱们 可能登录的时候就给了，这个我都在关键部分做了注释，根据情况灵活运用。
 
-   ![getinfo.png](https://i.loli.net/2021/04/30/o8eKvTwHYkyVU75.png)
+![getinfo.png](https://i.loli.net/2021/04/30/o8eKvTwHYkyVU75.png)
 
 2. 分页处理 和 iconfont 的使用
    [vue-element-admin 功能文档](https://panjiachen.github.io/vue-element-admin-site/zh/feature/component/svg-icon.html)
