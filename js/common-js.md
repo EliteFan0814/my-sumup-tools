@@ -165,6 +165,18 @@ const formatTime = (date) => {
 }
 ```
 
+## js 获取前一天的日期
+
+```js
+const yestodayDate = function () {
+  const today = new Date()
+  const yestoday = today - 1000 * 60 * 60 * 24
+  const yestodayDate = new Date(yestoday)
+  const res = yestodayDate.toLocaleDateString().replace(/\//g, '-')
+  return res
+}
+```
+
 ## 更新对象属性值
 
 在不给目标对象增加新的属性的同时更新目标对象属性值
@@ -217,4 +229,3 @@ function copy(targetValue) {
   document.body.removeChild(transfer)
 }
 ```
-
