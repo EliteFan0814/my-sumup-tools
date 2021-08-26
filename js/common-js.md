@@ -107,8 +107,8 @@ window.open('tel:15000000000', '_self')
 有时候后台管理需要导出功能，a 标签默认会打开新页面，此方法使用 dom 操作在当前页面创建下载链接并点击下载
 
 ```js
- //下载任务文件事件
-    downloadFilse(url, name) {
+ //下载任务文件事件 url 为下载地址
+    downloadFiles(url, name) {
       const aLink = document.createElement('a') //创建a链接
       aLink.style.display = 'none'
       aLink.href = url
@@ -117,6 +117,16 @@ window.open('tel:15000000000', '_self')
       aLink.click()
       document.body.removeChild(aLink) //点击完成后记得删除创建的链接
     },
+ //当后台返回的不是下载地址，而是文件的 blob 格式对象时
+ //注意 blobObj 为 blob 格式对象！！！
+ downloadFiles(blobObj,fileName){
+   const tempBlob = URL.createObjectURL(blobObj)
+   const aLink = document.createElement('a')
+   aLink.href = tempBlob
+   aLink.download = fileName
+   aLink.click()
+   URL.revokeObjectURL(tempBlob)
+ }
 ```
 
 ## js 获取 div 宽高
