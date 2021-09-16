@@ -187,6 +187,21 @@ const yestodayDate = function () {
 }
 ```
 
+## js 获取某月最后一天是几号
+
+```js
+const getLastdayOfTheMonth = function (data) {
+  let month = new Date(date).getMonth() + 1
+  let year = new Date(date).getFullYear()
+  if (month > 11) {
+    month -= 12
+    year++
+  }
+  let nextDate = new Date(year, month, 1)
+  return new Date(nextDate.getTime() - 1000 * 60 * 60 * 24).getDate()
+}
+```
+
 ## 更新对象属性值
 
 在不给目标对象增加新的属性的同时更新目标对象属性值
