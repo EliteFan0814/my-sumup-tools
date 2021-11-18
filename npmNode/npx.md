@@ -31,3 +31,7 @@ npx --ignore-existing create-react-app my-react-app
 # 指定某个版本的 Node 运行脚本
 $ npx node@0.12.8 -v
 ```
+
+## 参考博文
+
+> [npx 使用教程 阮一峰](http://www.ruanyifeng.com/blog/2019/02/npx.html)  
