@@ -18,6 +18,7 @@
   - [Git 小 tips](git/tips-git.md)
 - [npm 和 Node](npmNode/README.md)
   - [package.json 与 package-lock.json](npmNode/packageAndLock.md)
+  - [npx](npmNode/npx.md)
 - [前端工具](frontendTools/README.md)
   - [ESLint](frontendTools/eslint.md)
 - [VIM](vim/README.md)
