@@ -69,3 +69,32 @@ export default {
   downloadPath: isDev ? 'http://local.host.com/' : 'http://eliteFan.com/'
 }
 ```
+
+## eventBus
+
+```js
+//  eventBus.js
+import Vue from 'vue'
+
+export default new Vue()
+```
+
+```js
+// component1.vue
+import eventBus from './eventBus'
+
+watch:{
+  list(newvalue,oldvalue){
+    eventBus.$emit('my-event',{name:'event'})
+  }
+}
+```
+
+```js
+// component2.vue
+import eventBus from './eventBus'
+
+created(){
+  eventBus.$on('my-event',(msg)=>{})
+}
+```
