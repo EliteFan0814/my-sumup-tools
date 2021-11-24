@@ -19,7 +19,7 @@
 - [npm 和 Node](npmNode/README.md)
   - [package.json 与 package-lock.json](npmNode/packageAndLock.md)
   - [npx](npmNode/npx.md)
-  - [npx](npmNode/exports.md)
+  - [exports 与 module.exports](npmNode/exports.md)
 - [前端工具](frontendTools/README.md)
   - [ESLint](frontendTools/eslint.md)
 - [VIM](vim/README.md)
