@@ -65,7 +65,7 @@ wx.getSystemInfoSync().windowWidth 单位为 px
 胶囊按钮顶部边界距离手机状态栏底部边界的距离是 6px  
 胶囊按钮右部边界距离手机屏幕右侧留白安全距离是 6px
 
-```js
+```javascript
 // 小程序中的 app.js 中定义 capsuleToTop
 globalData: {
   //胶囊按钮距离顶部距离= 手机状态栏的高度(px)+6px
@@ -119,7 +119,7 @@ globalData: {
 </swiper>
 ```
 
-```js
+```javascript
 Page({
   data: {
     imgUrls: [],
@@ -176,7 +176,7 @@ Page({
 
 ## 小程序复制
 
-```js
+```javascript
 copyText(e) {
     wx.setClipboardData({
       data: e.currentTarget.dataset.text,
@@ -201,7 +201,7 @@ copyText(e) {
 
 ## 拨打电话
 
-```js
+```javascript
   makeCall(e) {
     const { phone } = app.tapData(e)
     wx.makePhoneCall({
@@ -224,7 +224,7 @@ copyText(e) {
 
 ## 获取当前页面
 
-```js
+```javascript
 handleCurrentPage(){
   const page = getCurrentPages().pop()
       if (page == undefined || page == null) return
@@ -238,7 +238,7 @@ handleCurrentPage(){
 有时从 B 页面做完某个操作返回 A 页面时需要更新 A 页面的某些数据，使用 A 页面中的 onShow 生命周期太 low, 可以使用小程序提
 供的路由函数的 success 回掉来处理更新 A 页面数据，例如：
 
-```js
+```javascript
 wx.navigateBack({
   delta: 1,
   success: function () {
@@ -252,7 +252,7 @@ wx.navigateBack({
 
 ## 刷新上个页面数据
 
-```js
+```javascript
 refreshPrePage(){
   const pages = getCurrentPages()
   const beforePage = pages[pages.length - 2]

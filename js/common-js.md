@@ -97,7 +97,7 @@ const checkdataType = function (yourData) {
 不想使用 a 标签破环样式结构的话，可以使用 window.open 实现部分常用功能  
 `window.open(URL,name,specs,replace)`
 
-```js
+```javascript
 //  在当前页面显示拨打电话
 window.open('tel:15000000000', '_self')
 ```
@@ -106,7 +106,7 @@ window.open('tel:15000000000', '_self')
 
 有时候后台管理需要导出功能，a 标签默认会打开新页面，此方法使用 dom 操作在当前页面创建下载链接并点击下载
 
-```js
+```javascript
  //下载任务文件事件 url 为下载地址
     downloadFiles(url, name) {
       const aLink = document.createElement('a') //创建a链接
@@ -131,7 +131,7 @@ window.open('tel:15000000000', '_self')
 
 ## js 获取 div 宽高
 
-```js
+```javascript
 const o = document.getElementById('view')
 const height = o.offsetHeight
 const width = o.offsetWidth
@@ -143,7 +143,7 @@ const width = o.offsetWidth
    传入一个合法的 date 格式时间数据，返回 {YY, MM, DD, HH, mm, ss}，默认返回当前时间的对象格式  
    例如：`formatDate(new Date())`返回对象：{ YY: '2021', MM: '01', DD: '12', HH: '09', mm: '56', ss: '55' }
 
-```js
+```javascript
 const formatDate = function (date = new Date()) {
   const YY = date.getFullYear() + ''
   const MM = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + ''
@@ -158,7 +158,7 @@ const formatDate = function (date = new Date()) {
 2. 方法 2：  
    返回类似 "2021/01/12 09:48:04" 格式的时间字符串
 
-```js
+```javascript
 const formatNumber = (n) => {
   n = n.toString()
   return n[1] ? n : `0${n}`
@@ -177,7 +177,7 @@ const formatTime = (date) => {
 
 ## js 获取前一天的日期
 
-```js
+```javascript
 const yestodayDate = function () {
   const today = new Date()
   const yestoday = today - 1000 * 60 * 60 * 24
@@ -189,7 +189,7 @@ const yestodayDate = function () {
 
 ## js 获取某月最后一天是几号
 
-```js
+```javascript
 const getLastdayOfTheMonth = function (data) {
   let month = new Date(date).getMonth() + 1
   let year = new Date(date).getFullYear()
@@ -206,7 +206,7 @@ const getLastdayOfTheMonth = function (data) {
 
 在不给目标对象增加新的属性的同时更新目标对象属性值
 
-```js
+```javascript
 const updateObj = function (target, source) {
   const keys = Object.keys(target)
   // const merge = Object.assign(target, source) 此方法会直接改变 target 对象
@@ -223,7 +223,7 @@ const updateObj = function (target, source) {
 
 index 从 0 开始
 
-```js
+```javascript
 const deleteItem = function (index, arr) {
   arr.splice(index, 1)
 }
@@ -231,7 +231,7 @@ const deleteItem = function (index, arr) {
 
 ## 获取文件类型
 
-```js
+```javascript
 //  方法1
 const fileType = fileName.substring(fileName.lastIndexOf('.') + 1)
 //  方法2
@@ -240,7 +240,7 @@ const fileType = fileName.split('.').pop().toLowerCase()
 
 ## 复制文字
 
-```js
+```javascript
 function copy(targetValue) {
   let transfer = document.createElement('input')
   document.body.appendChild(transfer)

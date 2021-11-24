@@ -2,7 +2,7 @@
 
 #### 从模块编写角度来看，二者等价
 
-```js
+```javascript
 console.log(exports)
 console.log(module.exports)
 console.log(module.exports === exports)
@@ -16,7 +16,7 @@ console.log(module.exports === exports)
 
 #### 从使用者角度，二者有区别
 
-```js
+```javascript
 // 使用 module.exports 语法写模块 exp.js
 module.exports = function(){
   console.log('这是用module.exports写的模块')
@@ -37,7 +37,7 @@ const {expFunc} = require('./exp.js)
 
 看另外一个例子
 
-```js
+```javascript
 // 模块 exp1.js
 exports = 3.14
 

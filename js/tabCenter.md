@@ -66,7 +66,7 @@ CSS 文件如下：
 
 JS 文件如下：
 
-```js
+```javascript
 var app = new Vue({
   el: '#app',
   data: {

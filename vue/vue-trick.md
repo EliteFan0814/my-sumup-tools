@@ -45,7 +45,7 @@ vscode 使用 vetur 插件会弹出不存在 tsconfig.json 或者 jsconfig.json 
 根目录新建 jsconfig.json 文件就行  
 jsconfig.json 文件内容结构如下：
 
-```json
+```javascripton
 {
   "compilerOptions": {
     "target": "es2015",
@@ -61,7 +61,7 @@ jsconfig.json 文件内容结构如下：
 
 ## 根据不同环境切换地址
 
-```js
+```javascript
 // environment.js
 const isDev = process.env.NODE_ENV == 'development'
 export default {
@@ -72,14 +72,14 @@ export default {
 
 ## eventBus
 
-```js
+```javascript
 //  eventBus.js
 import Vue from 'vue'
 
 export default new Vue()
 ```
 
-```js
+```javascript
 // component1.vue
 import eventBus from './eventBus'
 
@@ -90,7 +90,7 @@ watch:{
 }
 ```
 
-```js
+```javascript
 // component2.vue
 import eventBus from './eventBus'
 
