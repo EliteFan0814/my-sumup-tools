@@ -98,3 +98,20 @@ created(){
   eventBus.$on('my-event',(msg)=>{})
 }
 ```
+
+## 组件 props 传对象
+
+给定对象：
+
+```javascript
+post:{
+  id:1,
+  title:'fpx',
+  name:'fpc'
+}
+```
+
+则模板：  
+`<my-componment v-bind="post"></my-componment>`  
+ 等价于：  
+`<my-componment :id="post.id" :title="post.title" :name="post.name"></my-componment>`

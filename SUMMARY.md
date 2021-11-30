@@ -13,6 +13,7 @@
   - [常用小程序代码](mini/mini.md)
 - [VUE](vue/README.md)
   - [VUE 小技巧](vue/vue-trick.md)
+  - [VUE v-model的实现](vue/v-model.md)
 - [Git](git/README.md)
   - [Git 常用命令](git/common-git.md)
   - [Git 小 tips](git/tips-git.md)
