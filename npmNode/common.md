@@ -12,4 +12,6 @@ win10 64 位系统, nodejs 使用 npm install 出现报
 
 ## 参考博文
 
-> [页面内搜索 mousetraps 提供的解决方法](https://github.com/nodejs/node-gyp/issues/629)
+> [参考博文1-页面内搜索 mousetraps ](https://github.com/nodejs/node-gyp/issues/629)
+
+> [参考博文2](https://www.cnblogs.com/iTlijun/p/8193588.html)
