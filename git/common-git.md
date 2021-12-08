@@ -103,3 +103,11 @@ git remote add origin git@github.com:EliteFan0814/base-weapp-components.git
 git branch -M main
 git push -u origin main
 ```
+
+## 上传本地新分支到远程仓库
+
+```bash
+git checkout -b new-branch
+# 做完一系列add commit 操作之后，设置上游仓库地址
+git push --set-upstream origin new-branch
+```
