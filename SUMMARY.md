@@ -5,6 +5,7 @@
   - [常用 CSS 样式](css/common-css.md)
   - [坑爹的 CSS](css/fuck-css.md)
   - [sass 入门](css/sass.md)
+  - [canvas 总结](css/canvas.md)
 - [JS 常用](js/README.md)
   - [常用 JS 函数](js/common-js.md)
   - [表单和 FormData 对象](js/FormData.md)
