@@ -268,3 +268,13 @@ img {
   max-height: 150px;
 }
 ```
+
+## 彩色文字
+
+```css
+.parent {
+  background-image: -webkit-linear-gradient(left, #4af175, #4fe3c0, #51dbee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+```
