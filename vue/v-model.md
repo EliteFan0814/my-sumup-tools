@@ -2,6 +2,53 @@
 
 v-model 其实是 vue 中的语法糖，在此我们来实现这个语法糖，此例子使用 vue3 构建
 
+#### 例一
+
+要绑定的根组件 html：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>v-model 语法糖</title>
+  </head>
+
+  <body>
+    <div id="v-model-basic" class="demo">
+      <input v-model="message" placeholder="v-model用法" />
+      <p>Message is: {{ message }}</p>
+      <input :value="message1" @input="handleInput" placeholder="v-model的原理" />
+      <p>Message is: {{ message1 }}</p>
+    </div>
+    <script src="./index.js"></script>
+  </body>
+</html>
+```
+
+js 文件
+
+```javascript
+Vue.createApp({
+  data() {
+    return {
+      message: '',
+      message1:''
+    }
+  },
+  methods:{
+    handleInput(event){
+      this.message1 = event.target.value
+    }
+  }
+}).mount('#v-model-basic')
+```
+
+#### 例二
+
 要绑定的根组件 html：
 
 ```html
