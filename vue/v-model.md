@@ -36,11 +36,11 @@ Vue.createApp({
   data() {
     return {
       message: '',
-      message1:''
+      message1: ''
     }
   },
-  methods:{
-    handleInput(event){
+  methods: {
+    handleInput(event) {
       this.message1 = event.target.value
     }
   }
@@ -118,3 +118,10 @@ const HelloVueApp = {
 
 Vue.createApp(HelloVueApp).mount('#app')
 ```
+
+## v-model 修饰符之 number
+
+```html
+<input v-model.number="age" type="text" />
+```
+一个比较鸡肋的修饰符，作用是将输入的值转换为Number类型，如果转换不了就返回原输入值。

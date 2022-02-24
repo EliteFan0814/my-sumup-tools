@@ -10,8 +10,42 @@ win10 64 位系统, nodejs 使用 npm install 出现报
    b. 你也可以执行`npm config set msvs_version 2015 --global`进行全局设置，就不需要每次`npm install`时都指定
    msvs_version 2015
 
-## 参考博文
+#### 参考博文
 
-> [参考博文1-页面内搜索 mousetraps ](https://github.com/nodejs/node-gyp/issues/629)
+> [参考博文 1-页面内搜索 mousetraps ](https://github.com/nodejs/node-gyp/issues/629)
 
-> [参考博文2](https://www.cnblogs.com/iTlijun/p/8193588.html)
+> [参考博文 2](https://www.cnblogs.com/iTlijun/p/8193588.html)
+
+## vite 相关
+
+如下使用`npm create vite@latest`构建项目，在 windows 环境下不能使用上下箭头选择
+
+```shell
+fan@DESKTOP-F8A5QC7 MINGW64 /f/projectsMy
+$ npm create vite@latest
+? Project name: » vite-projectvitedemo
+√ Project name: ... vitedemo
+? Select a framework: » - Use arrow-keys. Return to submit.
+>   vanilla
+    vue
+    react
+    preact
+    lit
+    svelte
+
+```
+
+改换成`winpty npm.cmd create vite@latest`就可以了
+```shell
+fan@DESKTOP-F8A5QC7 MINGW64 /f/projectsMy
+$ winpty npm.cmd create vite@latest
+√ Project name: ... vitedemo
+? Select a framework: » - Use arrow-keys. Return to submit.
+>   vanilla
+    vue
+    react
+    preact
+    lit
+    svelte
+
+```
