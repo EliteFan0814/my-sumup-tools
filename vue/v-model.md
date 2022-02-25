@@ -1,8 +1,15 @@
-## vue 中 v-model 的实现
+## vue3 中 v-model 的实现
 
-v-model 其实是 vue 中的语法糖，在此我们来实现这个语法糖，此例子使用 vue3 构建
+v-model 其实是 vue 中的语法糖，在此我们来实现这个语法糖，此例子使用 vue3 构建  
+ **注意** VUE2 和 VUE3 中的 v-model 的实现发生改变，二者不兼容
 
-#### 例一
+**v-model 在内部为不同的输入元素使用不同的 property 并抛出不同的事件：**
+
+1. text 和 textarea 元素使用 value property 和 input 事件；
+2. checkbox 和 radio 使用 checked property 和 change 事件；
+3. select 字段将 value 作为 prop 并将 change 作为事件。
+
+**v-model 在组件上使用时，默认用 modelValue 作为 prop 和 update:modelValue 作为事件，可以通过向 v-model 传递参数来修改这些名称`<my-component v-model:title="bookTitle"></my-component>`**
 
 要绑定的根组件 html：
 
@@ -124,4 +131,5 @@ Vue.createApp(HelloVueApp).mount('#app')
 ```html
 <input v-model.number="age" type="text" />
 ```
-一个比较鸡肋的修饰符，作用是将输入的值转换为Number类型，如果转换不了就返回原输入值。
+
+一个比较鸡肋的修饰符，作用是将输入的值转换为 Number 类型，如果转换不了就返回原输入值。
