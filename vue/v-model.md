@@ -9,7 +9,10 @@ v-model 其实是 vue 中的语法糖，在此我们来实现这个语法糖，�
 2. checkbox 和 radio 使用 checked property 和 change 事件；
 3. select 字段将 value 作为 prop 并将 change 作为事件。
 
-**v-model 在组件上使用时，默认用 modelValue 作为 prop 和 update:modelValue 作为事件，可以通过向 v-model 传递参数来修改这些名称`<my-component v-model:title="bookTitle"></my-component>`**
+**v-model 在组件上使用时，默认用 modelValue 作为 prop 和 update:modelValue 作为事件，可以通过向 v-model 传递参数来修改这
+些名称`<my-component v-model:title="bookTitle"></my-component>`**
+
+#### 例一
 
 要绑定的根组件 html：
 

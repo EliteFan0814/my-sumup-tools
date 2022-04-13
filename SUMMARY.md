@@ -15,6 +15,7 @@
 - [VUE](vue/README.md)
   - [VUE 小技巧](vue/vue-trick.md)
   - [VUE3 v-model 的实现](vue/v-model.md)
+  - [VUE-CLI](vue/vue-cli.md)
   - [VUE3 自行构建 sfc 遇到的坑](vue/vue3-sfc.md)
 - [Git](git/README.md)
   - [Git 常用命令](git/common-git.md)
