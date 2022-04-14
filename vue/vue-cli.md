@@ -7,7 +7,7 @@ process.env 属性返回包含用户环境的对象。
 
 vue 项目中常见的 process.env.NODE_ENV 中的 NODE_ENV 是 vue-cli 自己添加的环境变量。
 
-### 2 模式、环境变量、环境文件
+### 2 Vue CLI 中的模式、环境变量、环境文件
 
 一个 Vue CLI 项目有三个模式：
 
@@ -15,7 +15,8 @@ vue 项目中常见的 process.env.NODE_ENV 中的 NODE_ENV 是 vue-cli 自己�
 2. test 用于 vue-cli-service test:unit
 3. production 用于 vue-cli-service build
 
---mode 选项参数为命令行覆写默认的模式: vue-cli-service build --mode development
+--mode 选项参数为命令行覆写默认的模式:  
+使用开发环境配置构建生产环境应用： `vue-cli-service build --mode development`
 
 环境文件里包含对应模式的环境变量
 
@@ -50,7 +51,7 @@ VUE_APP_TITLE=这是env.staging
 ```
 
 1. 情况 1：  
-   `vue-cli-service build` 会加载可能存在的 .env、.env.production 和 .env.production.local 文件然后构建出生产环 境应用。
+   `vue-cli-service build` 会加载可能存在的 .env、.env.production 和 .env.production.local 文件然后构建出生产环境应用。
 
 2. 情况 2：  
    `vue-cli-service build --mode staging` 会在 staging 模式下加载可能存在的 .env、.env.staging 和 .env.staging.local 文
@@ -58,6 +59,6 @@ VUE_APP_TITLE=这是env.staging
 
 根据 NODE_ENV，两种情况构建出的应用都是生产环境应用，但是 process.env.VUE_APP_TITLE 值不一样。
 
-**_只有 NODE*ENV，BASE_URL 和以 VUE_APP* 开头的变量将通过 webpack.DefinePlugin 静态地嵌入到客户端侧的代码中。_**
-
-你可以在应用的代码中这样访问它们：`console.log(process.env.VUE_APP_SECRET)`
+**环境变量会随着构建打包嵌入到输出代码，任何人都有机会找到这些值，所以不要在其中存储任何机密信息！！！这些环境变量中，
+NODE_ENV，BASE_URL 和以 VUE_APP 开头的变量将通过 webpack.DefinePlugin 静态地嵌入到客户端侧的代码中。对于这些环境变量你可
+以在应用的代码中直接访问它们：`console.log(process.env.VUE_APP_SECRET)`**
