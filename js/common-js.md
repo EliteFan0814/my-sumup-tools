@@ -254,3 +254,10 @@ function copy(targetValue) {
   document.body.removeChild(transfer)
 }
 ```
+
+## 数组去重
+```javascript
+let tempArr = [1,1,2,3,'3',4,'4',5,5,5,6]
+const resArr = Array.from(new Set(tempArr))
+console.log(resArr) // [1, 2, 3, "3", 4, "4", 5, 6]
+```

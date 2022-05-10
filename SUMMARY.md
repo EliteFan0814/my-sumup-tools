@@ -17,6 +17,8 @@
   - [VUE3 v-model 的实现](vue/v-model.md)
   - [VUE-CLI](vue/vue-cli.md)
   - [VUE3 自行构建 sfc 遇到的坑](vue/vue3-sfc.md)
+- [vite](vite/README.md)
+  - [vite](vite/vite.md)
 - [Git](git/README.md)
   - [Git 常用命令](git/common-git.md)
   - [Git 小 tips](git/tips-git.md)
