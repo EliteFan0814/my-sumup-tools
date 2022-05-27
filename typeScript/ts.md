@@ -10,15 +10,15 @@ interface IPerson {
   lastName: string
   age?: number // 可选属性
   talk: () => void
-  run:string|string[]|(()=>string) // 联合类型
+  run: string | string[] | (() => string) // 联合类型
   [propName: string]: any // 任意属性
 }
 
 const person: IPerson = {
-  id:1,
+  id: 1,
   firstName: '培超',
   lastName: '范',
-  run:'我会跑步',
+  run: '我会跑步',
   talk() {
     console.log(`我的名字是${this.lastName}${this.firstName}`)
   },
@@ -31,3 +31,10 @@ person.talk()
 
 **赋值的时候，变量的形状必须和接口的形状保持一致，属性不能多也不能少，不然会编译时报错**  
 **一旦定义了任意属性，那么确定属性和可选属性的类型都必须是它的类型的子集**
+
+## @types
+
+它指的是 [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped)，这个仓库中记录了 90% 的顶级 JavaScript 库  
+例如，jQuery 是用 js 写的，不支持 Ts 类型检查，在项目中，你可以安装`npm install -D @typesjquery`来让 jQuery 支持 Ts 类型检查。
+
+@types 的本质是用来存放类型声明文件（\*.d.ts）的库，常用来为 **非天生支持 Ts** 的库提供类型检查支持。
