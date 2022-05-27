@@ -10,6 +10,8 @@
   - [常用 JS 函数](js/common-js.md)
   - [表单和 FormData 对象](js/FormData.md)
   - [水平滑动 tab 居中](js/tabCenter.md)
+- [TypeScript](typeScript/README.md)
+  - [TS 概念](typeScript/ts.md)
 - [小程序](mini/README.md)
   - [常用小程序代码](mini/mini.md)
 - [VUE](vue/README.md)
