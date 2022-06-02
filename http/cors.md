@@ -30,7 +30,8 @@ Access-Control-Allow-Credentials：可选值 表示是否允许发送 Cookie，�
 Access-Control-Expose-Headers：可选值 XMLHttpRequest 对象的 getResponseHeader()可以拿到的其他字段。
 
 - 非简单请求非简单请求会在正式通信前，进行预检请求  
-   ![预检请求详情.png](https://s2.loli.net/2022/06/02/rjybS49ZwJsKOQV.png)
+
+![预检请求详情.png](https://s2.loli.net/2022/06/02/rjybS49ZwJsKOQV.png)
 
 除了 Origin 字段，"预检"请求的头信息包括两个特殊字段：
 
