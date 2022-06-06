@@ -37,8 +37,7 @@ const limitToNumberStr = function (valStr) {
 
 ### 方式 1
 
-示例：{ userName : 'elite' , local : 'china' } 转换为 [{ name : 'userName' , value : 'elite' } , { name : 'local' ,
-value : 'china' }]
+示例：{ userName : 'elite' , local : 'china' } 转换为 [{ name : 'userName' , value : 'elite' } , { name : 'local' , value : 'china' }]
 
 ```javascript
 const objTransToArray = function (obj) {
@@ -108,24 +107,39 @@ window.open('tel:15000000000', '_self')
 
 ```javascript
  //下载任务文件事件 url 为下载地址
-    downloadFiles(url, name) {
-      const aLink = document.createElement('a') //创建a链接
-      aLink.style.display = 'none'
-      aLink.href = url
-      aLink.download = name
-      document.body.appendChild(aLink)
-      aLink.click()
-      document.body.removeChild(aLink) //点击完成后记得删除创建的链接
-    },
+  function downloadFiles(url, name) {
+    const aLink = document.createElement('a') //创建a链接
+    aLink.style.display = 'none'
+    aLink.href = url
+    aLink.download = name
+    document.body.appendChild(aLink)
+    aLink.click()
+    document.body.removeChild(aLink) //点击完成后记得删除创建的链接
+  },
  //当后台返回的不是下载地址，而是文件的 blob 格式对象时
  //注意 blobObj 为 blob 格式对象！！！
- downloadFiles(blobObj,fileName){
+ //  方法1：
+ function downloadFiles(blobObj,fileName){
    const tempBlob = URL.createObjectURL(blobObj)
    const aLink = document.createElement('a')
    aLink.href = tempBlob
    aLink.download = fileName
    aLink.click()
    URL.revokeObjectURL(tempBlob)
+ }
+//  方法2：
+ function downloadFiles(blobObj, fileName) {
+   const reader = new FileReader()
+   reader.readAsDataURL(blobObj)
+   reader.onload = (e) => {
+     const aLink = document.createElement('a')
+     aLink.style.display = 'none'
+     aLink.href = e.target.result
+     aLink.download = 'fileName'
+     document.body.appendChild(aLink)
+     aLink.click()
+     document.body.removeChild(aLink) //点击完成后记得删除创建的链接
+   }
  }
 ```
 
@@ -265,4 +279,14 @@ function uniqueArr(arr) {
 let tempArr = [1, 1, 2, 3, '3', 4, '4', 5, 5, 5, 6]
 const resArr = uniqueArr(tempArr)
 console.log(resArr) // [1, 2, 3, "3", 4, "4", 5, 6]
+```
+
+## 下划线转驼峰命名
+
+```javascript
+function tuHump(name) {
+  return name.toLowerCase().replace(/\_(\w)/g, function (all, letter) {
+    return letter.toUpperCase()
+  })
+}
 ```
