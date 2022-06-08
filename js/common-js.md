@@ -143,6 +143,46 @@ window.open('tel:15000000000', '_self')
  }
 ```
 
+### 举例，下载 application/vnd.ms-excel 格式文件
+
+当请求返回的是 application/vnd.ms-excel 类型的数据时，<font color="red">发送 XMLHttpRequest 请求时，注意设置 responseType 为 blob</font>
+
+```javascript
+// 1 使用原生 XMLHttpRequest 发送请求
+const xhr = new XMLHttpRequest()
+xhr.open('GET', '/path/to/excel/template', true)
+// 设置responseType属性的值，告诉浏览器如何解读返回的数据
+xhr.responseType = 'blob'
+// load 事件表示服务器传来的数据接收完毕
+xhr.onload = function (e) {
+  if (this.status === 200) {
+    const blob = new Blob([xhr.response], { type: 'application/vnd.ms-excel;charset=UTF-8' })
+    const tempBlob = URL.createObjectURL(blob)
+    const aLink = document.createElement('a')
+    aLink.href = tempBlob
+    aLink.download = '模板文件'
+    aLink.click()
+    URL.revokeObjectURL(tempBlob)
+  }
+}
+xhr.send()
+
+// 2 使用 axios 发送请求
+axios({
+  method: 'get',
+  url: '/path/to/excel/template',
+  responseType: 'blob'
+}).then((res) => {
+  const blob = new Blob([res.data], { type: 'application/vnd.ms-excel;charset=UTF-8' })
+  const tempBlob = URL.createObjectURL(blob)
+  const aLink = document.createElement('a')
+  aLink.href = tempBlob
+  aLink.download = '模板文件'
+  aLink.click()
+  URL.revokeObjectURL(tempBlob)
+})
+```
+
 ## js 获取 div 宽高
 
 ```javascript
