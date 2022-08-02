@@ -12,6 +12,7 @@
   - [水平滑动 tab 居中](js/tabCenter.md)
 - [TypeScript](typeScript/README.md)
   - [TS 概念](typeScript/ts.md)
+  - [interface与type](typeScript/interfaceType.md)
 - [小程序](mini/README.md)
   - [常用小程序代码](mini/mini.md)
 - [VUE](vue/README.md)

@@ -16,8 +16,8 @@ interface IPerson {
 
 const person: IPerson = {
   id: 1,
-  firstName: '培超',
-  lastName: '范',
+  firstName: '屁虫',
+  lastName: '放',
   run: '我会跑步',
   talk() {
     console.log(`我的名字是${this.lastName}${this.firstName}`)
