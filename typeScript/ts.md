@@ -27,7 +27,8 @@ console.log(0 || 1) // 0
 
 ### TypeScript 3.7 实现了?.(可选链)
 
-如果遇到 null 或 undefined 就可以立即停止某些表达式的运行
+如果遇到 null 或 undefined 就可以立即停止某些表达式的运行  
+a?.b 表示：先检查 a 是否为 null 或 undefined，若是，则直接返回 undefned，若不是，则取 a.b
 
 ```typescript
 const a = {
@@ -47,6 +48,7 @@ var val = a === null || a === void 0 ? void 0 : a.b
 
 检查对象 a 是否为 null 或 undefined，如果是的话就立即返回 undefined（void 0 === undefined），这样就可以立即停止某些表达式的运行。
 
-?. 与 && 运算符行为略有不同，&& 专门用于检测 falsy 值，比如空字符串、0、NaN、null 和 false 等。而 ?. 只会验证对象是否为 null 或 undefined，对于 0 或空字符串来说，并不会出现 “短路”。
+?. 与 && 运算符行为略有不同，&& 专门用于检测 falsy 值，比如空字符串、0、NaN、null 和 false 等。而 ?. 只会验证对象是否为 null 或 undefined，对于 0 或空字符串来说，并不会出现 “短路
+”。
 
 ### !.的意思是断言，告诉 ts 你这个对象里一定有某个值
