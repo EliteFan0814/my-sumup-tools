@@ -34,6 +34,7 @@
   - [exports 与 module.exports](npmNode/exports.md)
 - [http 请求](http/README.md)
   - [cors 跨域请求](http/cors.md)
+  - [windows hosts文件](http/hosts.md)
 - [前端工具](frontendTools/README.md)
   - [ESLint](frontendTools/eslint.md)
 - [VIM](vim/README.md)
