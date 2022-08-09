@@ -52,3 +52,31 @@ var val = a === null || a === void 0 ? void 0 : a.b
 ”。
 
 ### !.的意思是断言，告诉 ts 你这个对象里一定有某个值
+
+## as const 技巧
+
+当使用 as const 断言：
+
+1. 不会扩大表达式中的文字类型
+2. 对象中的属性变为只读
+3. 数组中的元素变为只读元组
+
+举例说明：
+
+```javascript
+// Type '"hello"'
+let x = "hello" as const;
+// Type '"string"'
+let x = "hello";
+
+// Type 'readonly [10, 20]'
+let y = [10, 20] as const;
+// Type 'number[]'
+let y = [10,20]
+
+// Type '{ readonly text: "hello" }'
+let z = { text: "hello" } as const;
+// Type '{text: string;}'
+let z = { text: "hello" };
+
+```
