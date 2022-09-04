@@ -1,6 +1,13 @@
----
-description: Git常用命令解释
----
+## git 常用命令
+
+```bash
+# 更新远程分支列表
+git remote update origin -p
+# 修改本地分支名
+git branch -m old_branch new_branch
+```
+
+## 拉取远程分支
 
 ## .gitignore 规则
 
@@ -30,4 +37,12 @@ build/*
 doc/*.txt
 # 忽略在 doc 文件夹下的所有 .pdf 文件 
 doc/**/*.pdf
+git checkout -b new-branch
+# 做完一系列add commit 操作之后，设置上游仓库地址
+git push --set-upstream origin new-branch
+```
+
+## 清空本地保存的用户名和密码(管理员权限)
+```bash
+git config --system --unset credential.helper
 ```
