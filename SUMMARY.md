@@ -38,5 +38,5 @@
   - [Git](git/README.md)
     - [Git 常用命令](git/common-git.md)
     - [Git 小 tips](git/tips-git.md)
-- [java]
+- [java](java/README.md)
   - [多态](java/polymorphic.md)
