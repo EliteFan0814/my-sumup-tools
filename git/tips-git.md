@@ -38,7 +38,8 @@ git pull origin branchName
 ```
 
 git fetch 的目的是获取远程最新仓库信息，避免出现类似：  
-fatal: 'origin/ac_branch' is not a commit and a branch 'ac_branch' cannot be created from it  
+fatal: 'origin/ac_branch' is not a commit and a branch 'ac_branch' cannot be
+created from it  
 这样的错误
 
 ## 删除分支
@@ -135,4 +136,13 @@ git push -u origin main
 git checkout -b new-branch
 # 做完一系列add commit 操作之后，设置上游仓库地址
 git push --set-upstream origin new-branch
+```
+
+## 更改默认分支名称后的本地操作
+
+```bash
+git branch -m watch main
+git fetch origin
+git branch -u origin/main main
+git remote set-head origin -a
 ```
