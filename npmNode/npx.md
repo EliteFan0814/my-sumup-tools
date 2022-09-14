@@ -13,7 +13,7 @@ $ npx mocha --version
 
 **避免全局安装的模块**
 
-> 比如：create-react-app这个模块是全局安装，npx 可以运行它，而且不进行全局安装
+> 比如：create-react-app这个模块是全局安装的可执行命令，npx 可以运行它，而且不进行全局安装
 
 ```bash
 # 将 create-react-app下载到一个临时目录，使用以后再删除
