@@ -29,6 +29,7 @@
 - [前端工具](frontendTools/README.md)
   - [npm 和 Node](npmNode/README.md)
     - [常见问题](npmNode/common.md)
+    - [npmTips](npmNode/npmTips.md)
     - [package.json 与 package-lock.json](npmNode/packageAndLock.md)
     - [npx](npmNode/npx.md)
     - [exports 与 module.exports](npmNode/exports.md)
