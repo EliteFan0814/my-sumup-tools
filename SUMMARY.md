@@ -40,4 +40,5 @@
     - [Git 常用命令](git/common-git.md)
     - [Git 小 tips](git/tips-git.md)
 - [java](java/README.md)
+  - [java常用](java/common.md)
   - [多态](java/polymorphic.md)
