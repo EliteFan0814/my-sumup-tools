@@ -44,3 +44,5 @@ public class Main {
 // 打印结果：
 // I am Sub, the param is ParamBase
 ```
+
+实例方法默认是多态的，方法的参数是静态绑定的，方法是动态绑定的。
