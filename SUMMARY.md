@@ -13,6 +13,7 @@
   - [TS 概念](typeScript/ts.md)
   - [interface 与 type](typeScript/interfaceType.md)
   - [interface 接口](typeScript/interface.md)
+  - [Ts 配合 ESLint 和 prettier](typeScript/tsWithEslintPrettier.md)
 - [小程序](mini/README.md)
   - [常用小程序代码](mini/mini.md)
 - [VUE](vue/README.md)
