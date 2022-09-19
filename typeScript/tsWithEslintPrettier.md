@@ -114,3 +114,9 @@
        "source.fixAll.eslint": true
      },
    ```
+
+#### 参考博文
+
+> [typescript-eslint](https://typescript-eslint.io/docs/)  
+> [eslint-config-prettier](https://github.com/prettier/eslint-config-prettier)  
+> [eslint-plugin-prettier](https://github.com/prettier/eslint-plugin-prettier)
