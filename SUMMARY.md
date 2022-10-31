@@ -27,6 +27,7 @@
 - [http 请求](http/README.md)
   - [cors 跨域请求](http/cors.md)
   - [windows hosts 文件](http/hosts.md)
+  - [err_blocked_by_client错误](http/err_blocked_by_client错误.md)
 - [前端工具](frontendTools/README.md)
   - [npm 和 Node](npmNode/README.md)
     - [常见问题](npmNode/common.md)
