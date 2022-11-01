@@ -10,13 +10,13 @@
 
 ```javascript
 const sliceArray = function (targetArray, number) {
-  const page = Math.ceil(targetArray.length / number)
-  const returnArr = []
+  const page = Math.ceil(targetArray.length / number);
+  const returnArr = [];
   for (let i = 0; i < page; i++) {
-    returnArr[i] = targetArray.slice(i * number, (i + 1) * number)
+    returnArr[i] = targetArray.slice(i * number, (i + 1) * number);
   }
-  return returnArr
-}
+  return returnArr;
+};
 ```
 
 ## 限制只能传入数字
@@ -24,48 +24,50 @@ const sliceArray = function (targetArray, number) {
 ```javascript
 // valStr 确保是一个字符串类型
 const limitToNumberStr = function (valStr) {
-  let tempValue = valStr.toString()
+  let tempValue = valStr.toString();
   return tempValue
-    .replace(/[^0-9.]/g, '')
-    .replace('.', '#*')
-    .replace(/\./g, '')
-    .replace('#*', '.')
-}
+    .replace(/[^0-9.]/g, "")
+    .replace(".", "#*")
+    .replace(/\./g, "")
+    .replace("#*", ".");
+};
 ```
 
 ## 将对象转换为数组
 
 ### 方式 1
 
-示例：{ userName : 'elite' , local : 'china' } 转换为 [{ name : 'userName' , value : 'elite' } , { name : 'local' , value : 'china' }]
+示例：{ userName : 'elite' , local : 'china' } 转换为 [{ name : 'userName' ,
+value : 'elite' } , { name : 'local' , value : 'china' }]
 
 ```javascript
 const objTransToArray = function (obj) {
-  let arr = []
+  let arr = [];
   Object.keys(obj).forEach((itemKey) => {
-    let o = {}
-    o.name = itemKey
-    o.value = obj[itemKey]
-    arr.push(o)
-  })
-  return arr
-}
+    let o = {};
+    o.name = itemKey;
+    o.value = obj[itemKey];
+    arr.push(o);
+  });
+  return arr;
+};
 ```
 
 ### 方式 2
 
-示例：{ userName : 'elite' , local : 'china' } 转换为 [{ userName : 'elite' } , { local : 'china' }]
+示例：{ userName : 'elite' , local : 'china' } 转换为 [{ userName : 'elite' } ,
+{ local : 'china' }]
 
 ```javascript
 const objTransToArray = function (obj) {
-  let arr = []
+  let arr = [];
   Object.keys(obj).forEach((itemKey) => {
-    let o = {}
-    o[itemKey] = obj[itemKey]
-    arr.push(o)
-  })
-  return arr
-}
+    let o = {};
+    o[itemKey] = obj[itemKey];
+    arr.push(o);
+  });
+  return arr;
+};
 ```
 
 ## 判断数据类型
@@ -76,9 +78,9 @@ const objTransToArray = function (obj) {
 // yourData 传入的数据
 // dataType 要验证的数据类型，例如 String Number
 const checkType = function (yourData, dataType) {
-  const type = Object.prototype.toString.call(yourData).slice(8, -1)
-  return type === dataType
-}
+  const type = Object.prototype.toString.call(yourData).slice(8, -1);
+  return type === dataType;
+};
 ```
 
 ### 方法 2 返回值为数据类型
@@ -86,9 +88,9 @@ const checkType = function (yourData, dataType) {
 ```javascript
 // checkdataType({}); // "object"
 const checkdataType = function (yourData) {
-  const type = Object.prototype.toString.call(yourData).slice(8, -1)
-  return type.match(/\[object (.*?)\]/)[1].toLowerCase()
-}
+  const type = Object.prototype.toString.call(yourData).slice(8, -1);
+  return type.match(/\[object (.*?)\]/)[1].toLowerCase();
+};
 ```
 
 ## 巧用 window.open
@@ -98,115 +100,41 @@ const checkdataType = function (yourData) {
 
 ```javascript
 //  在当前页面显示拨打电话
-window.open('tel:15000000000', '_self')
-```
-
-## 当前页点击下载
-
-有时候后台管理需要导出功能，a 标签默认会打开新页面，此方法使用 dom 操作在当前页面创建下载链接并点击下载
-
-```javascript
- //下载任务文件事件 url 为下载地址
-  function downloadFiles(url, name) {
-    const aLink = document.createElement('a') //创建a链接
-    aLink.style.display = 'none'
-    aLink.href = url
-    aLink.download = name
-    document.body.appendChild(aLink)
-    aLink.click()
-    document.body.removeChild(aLink) //点击完成后记得删除创建的链接
-  },
- //当后台返回的不是下载地址，而是文件的 blob 格式对象时
- //注意 blobObj 为 blob 格式对象！！！
- //  方法1：
- function downloadFiles(blobObj,fileName){
-   const tempBlob = URL.createObjectURL(blobObj)
-   const aLink = document.createElement('a')
-   aLink.href = tempBlob
-   aLink.download = fileName
-   aLink.click()
-   URL.revokeObjectURL(tempBlob)
- }
-//  方法2：
- function downloadFiles(blobObj, fileName) {
-   const reader = new FileReader()
-   reader.readAsDataURL(blobObj)
-   reader.onload = (e) => {
-     const aLink = document.createElement('a')
-     aLink.style.display = 'none'
-     aLink.href = e.target.result
-     aLink.download = 'fileName'
-     document.body.appendChild(aLink)
-     aLink.click()
-     document.body.removeChild(aLink) //点击完成后记得删除创建的链接
-   }
- }
-```
-
-### 举例，下载 application/vnd.ms-excel 格式文件
-
-当请求返回的是 application/vnd.ms-excel 类型的数据时，<font color="red">发送 XMLHttpRequest 请求时，注意设置 responseType 为 blob</font>
-
-```javascript
-// 1 使用原生 XMLHttpRequest 发送请求
-const xhr = new XMLHttpRequest()
-xhr.open('GET', '/path/to/excel/template', true)
-// 设置responseType属性的值，告诉浏览器如何解读返回的数据
-xhr.responseType = 'blob'
-// load 事件表示服务器传来的数据接收完毕
-xhr.onload = function (e) {
-  if (this.status === 200) {
-    const blob = new Blob([xhr.response], { type: 'application/vnd.ms-excel;charset=UTF-8' })
-    const tempBlob = URL.createObjectURL(blob)
-    const aLink = document.createElement('a')
-    aLink.href = tempBlob
-    aLink.download = '模板文件'
-    aLink.click()
-    URL.revokeObjectURL(tempBlob)
-  }
-}
-xhr.send()
-
-// 2 使用 axios 发送请求
-axios({
-  method: 'get',
-  url: '/path/to/excel/template',
-  responseType: 'blob'
-}).then((res) => {
-  const blob = new Blob([res.data], { type: 'application/vnd.ms-excel;charset=UTF-8' })
-  const tempBlob = URL.createObjectURL(blob)
-  const aLink = document.createElement('a')
-  aLink.href = tempBlob
-  aLink.download = '模板文件'
-  aLink.click()
-  URL.revokeObjectURL(tempBlob)
-})
+window.open("tel:15000000000", "_self");
 ```
 
 ## js 获取 div 宽高
 
 ```javascript
-const o = document.getElementById('view')
-const height = o.offsetHeight
-const width = o.offsetWidth
+const o = document.getElementById("view");
+const height = o.offsetHeight;
+const width = o.offsetWidth;
 ```
 
 ## js 时间处理
 
 1. 方法 1：  
-   传入一个合法的 date 格式时间数据，返回 {YY, MM, DD, HH, mm, ss}，默认返回当前时间的对象格式  
-   例如：`formatDate(new Date())`返回对象：{ YY: '2021', MM: '01', DD: '12', HH: '09', mm: '56', ss: '55' }
+   传入一个合法的 date 格式时间数据，返回 {YY, MM, DD, HH, mm, ss}，默认返回当前
+   时间的对象格式  
+   例如：`formatDate(new Date())`返回对象：{ YY: '2021', MM: '01', DD: '12', HH:
+   '09', mm: '56', ss: '55' }
 
 ```javascript
 const formatDate = function (date = new Date()) {
-  const YY = date.getFullYear() + ''
-  const MM = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + ''
-  const DD = date.getDate() < 10 ? '0' + date.getDate() : date.getDate() + ''
-  const HH = date.getHours() < 10 ? '0' + date.getHours() : date.getHours() + ''
-  const mm = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes() + ''
-  const ss = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds() + ''
-  return { YY, MM, DD, HH, mm, ss }
-}
+  const YY = date.getFullYear() + "";
+  const MM =
+    (date.getMonth() + 1 < 10
+      ? "0" + (date.getMonth() + 1)
+      : date.getMonth() + 1) + "";
+  const DD = date.getDate() < 10 ? "0" + date.getDate() : date.getDate() + "";
+  const HH =
+    date.getHours() < 10 ? "0" + date.getHours() : date.getHours() + "";
+  const mm =
+    date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes() + "";
+  const ss =
+    date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds() + "";
+  return { YY, MM, DD, HH, mm, ss };
+};
 ```
 
 2. 方法 2：  
@@ -214,46 +142,52 @@ const formatDate = function (date = new Date()) {
 
 ```javascript
 const formatNumber = (n) => {
-  n = n.toString()
-  return n[1] ? n : `0${n}`
-}
+  n = n.toString();
+  return n[1] ? n : `0${n}`;
+};
 const formatTime = (date) => {
-  const year = date.getFullYear()
-  const month = date.getMonth() + 1
-  const day = date.getDate()
-  const hour = date.getHours()
-  const minute = date.getMinutes()
-  const second = date.getSeconds()
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  const hour = date.getHours();
+  const minute = date.getMinutes();
+  const second = date.getSeconds();
 
-  return `${[year, month, day].map(formatNumber).join('/')} ${[hour, minute, second].map(formatNumber).join(':')}`
-}
+  return `${[year, month, day].map(formatNumber).join("/")} ${[
+    hour,
+    minute,
+    second,
+  ]
+    .map(formatNumber)
+    .join(":")}`;
+};
 ```
 
 ## js 获取前一天的日期
 
 ```javascript
 const yestodayDate = function () {
-  const today = new Date()
-  const yestoday = today - 1000 * 60 * 60 * 24
-  const yestodayDate = new Date(yestoday)
-  const res = yestodayDate.toLocaleDateString().replace(/\//g, '-')
-  return res
-}
+  const today = new Date();
+  const yestoday = today - 1000 * 60 * 60 * 24;
+  const yestodayDate = new Date(yestoday);
+  const res = yestodayDate.toLocaleDateString().replace(/\//g, "-");
+  return res;
+};
 ```
 
 ## js 获取某月最后一天是几号
 
 ```javascript
 const getLastdayOfTheMonth = function (data) {
-  let month = new Date(date).getMonth() + 1
-  let year = new Date(date).getFullYear()
+  let month = new Date(date).getMonth() + 1;
+  let year = new Date(date).getFullYear();
   if (month > 11) {
-    month -= 12
-    year++
+    month -= 12;
+    year++;
   }
-  let nextDate = new Date(year, month, 1)
-  return new Date(nextDate.getTime() - 1000 * 60 * 60 * 24).getDate()
-}
+  let nextDate = new Date(year, month, 1);
+  return new Date(nextDate.getTime() - 1000 * 60 * 60 * 24).getDate();
+};
 ```
 
 ## 更新对象属性值
@@ -262,15 +196,15 @@ const getLastdayOfTheMonth = function (data) {
 
 ```javascript
 const updateObj = function (target, source) {
-  const keys = Object.keys(target)
+  const keys = Object.keys(target);
   // const merge = Object.assign(target, source) 此方法会直接改变 target 对象
-  const merge = { ...target, ...source }
-  const temp = {}
+  const merge = { ...target, ...source };
+  const temp = {};
   keys.map((item, index) => {
-    temp[item] = merge[item]
-  })
-  return temp
-}
+    temp[item] = merge[item];
+  });
+  return temp;
+};
 ```
 
 ## 删除数组某一项
@@ -279,33 +213,33 @@ index 从 0 开始
 
 ```javascript
 const deleteItem = function (index, arr) {
-  arr.splice(index, 1)
-}
+  arr.splice(index, 1);
+};
 ```
 
 ## 获取文件类型
 
 ```javascript
 //  方法1
-const fileType = fileName.substring(fileName.lastIndexOf('.') + 1)
+const fileType = fileName.substring(fileName.lastIndexOf(".") + 1);
 //  方法2
-const fileType = fileName.split('.').pop().toLowerCase()
+const fileType = fileName.split(".").pop().toLowerCase();
 ```
 
 ## 复制文字
 
 ```javascript
 function copy(targetValue) {
-  let transfer = document.createElement('input')
-  document.body.appendChild(transfer)
-  transfer.value = targetValue // 这里表示想要复制的内容
-  transfer.focus()
-  transfer.select()
-  if (document.execCommand('copy')) {
-    document.execCommand('copy')
+  let transfer = document.createElement("input");
+  document.body.appendChild(transfer);
+  transfer.value = targetValue; // 这里表示想要复制的内容
+  transfer.focus();
+  transfer.select();
+  if (document.execCommand("copy")) {
+    document.execCommand("copy");
   }
-  transfer.blur()
-  document.body.removeChild(transfer)
+  transfer.blur();
+  document.body.removeChild(transfer);
 }
 ```
 
@@ -313,12 +247,12 @@ function copy(targetValue) {
 
 ```javascript
 function uniqueArr(arr) {
-  return Array.from(new Set(arr))
+  return Array.from(new Set(arr));
 }
 
-let tempArr = [1, 1, 2, 3, '3', 4, '4', 5, 5, 5, 6]
-const resArr = uniqueArr(tempArr)
-console.log(resArr) // [1, 2, 3, "3", 4, "4", 5, 6]
+let tempArr = [1, 1, 2, 3, "3", 4, "4", 5, 5, 5, 6];
+const resArr = uniqueArr(tempArr);
+console.log(resArr); // [1, 2, 3, "3", 4, "4", 5, 6]
 ```
 
 ## 下划线转驼峰命名
@@ -326,7 +260,7 @@ console.log(resArr) // [1, 2, 3, "3", 4, "4", 5, 6]
 ```javascript
 function tuHump(name) {
   return name.toLowerCase().replace(/\_(\w)/g, function (all, letter) {
-    return letter.toUpperCase()
-  })
+    return letter.toUpperCase();
+  });
 }
 ```
