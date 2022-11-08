@@ -16,9 +16,9 @@ let 张韶涵 = new Star("张韶涵", 18);
 let 张惠妹 = new Star("张惠妹", 28);
 
 周杰伦.sing(); // "周杰伦在唱歌"
-蔡徐坤.sing(); // "周杰伦在唱歌"
-张韶涵.sing(); // "周杰伦在唱歌"
-张惠妹.sing(); // "周杰伦在唱歌"
+蔡徐坤.sing(); // "蔡徐坤在唱歌"
+张韶涵.sing(); // "张韶涵在唱歌"
+张惠妹.sing(); // "张惠妹在唱歌"
 ```
 
 #### 构造函数存在的问题
@@ -38,10 +38,10 @@ Star.prototype.sing = function () {
 
 JavaScript 规定，每一个构造函数都有一个 prototype 属性，指向另一个对象（原型对象
 ）以上例子中，构造函数通过原型 prototype 分配的函数是所有对象所共享的。我们可以
-把那些不变的方法，直接定义在 prototype 对象上，这样所有对象的实例就可以共享这些
+把那些通用的方法，直接定义在 prototype 对象上，这样所有对象的实例就可以共享这些
 方法。
 
-如果有多个对象的方法，我们可以给原型对象采取对象形式赋值
+如果有多个对象的方法，我们可以给原型对象采取对象形式赋值：
 
 ```js
 function Star(name, age) {
@@ -75,6 +75,29 @@ Star.prototype = {
 5. **proto** 对象原型的意义就在于为对象成员查找机制提供一个方向，或者说一条路线
    。
 
+#### 原型对象中的 this 指向
+
+原型对象中定义的方法（函数）内**this 的指向**为这个方法（函数）的调用者，也就是
+实例对象
+
+```js
+class Xing {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+    this.innerThis = function () {
+      return this;
+    };
+  }
+  outerThis() {
+    return this;
+  }
+}
+
+const zxc = new Xing("周星驰", 18);
+console.log(zxc.innerThis() === zxc.outerThis()); // true
+```
+
 #### 构造函数与 class 类
 
 如下可查看二者在构造上的区别：
@@ -96,7 +119,7 @@ Star.prototype = {
   },
 };
 
-// 使用class
+// 使用class类
 class Star {
   constructor(name, age) {
     this.name = name;
