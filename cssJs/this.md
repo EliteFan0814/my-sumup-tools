@@ -26,7 +26,7 @@ tags:
 
 来看一道题：
 
-```js
+```javascript
 var x = 0
 var y = 1
 // 普通函数
@@ -74,7 +74,7 @@ this 会指向该原始值的自动包装对象（严格模式下默认 thisArg 
 
 先看个示例（不建议在定义对象的方法时使用箭头函数，这里只是为了探讨问题而使用）：
 
-```js
+```javascript
 var obj = {
   name: 'fpc',
   tool: () => {

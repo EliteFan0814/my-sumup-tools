@@ -2,7 +2,7 @@
 
 #### 构造函数
 
-```js
+```javascript
 function Star(name, age) {
   this.name = name;
   this.age = age;
@@ -26,7 +26,7 @@ let 张惠妹 = new Star("张惠妹", 28);
 上例存在一个问题：每一个实例都存在 sing 方法，这会占据大量的内存空间，造成内存浪
 费。 我们希望所有的对象使用同一个函数，这样就比较节省内存，那么我们要怎样做呢？
 
-```js
+```javascript
 function Star(name, age) {
   this.name = name;
   this.age = age;
@@ -43,7 +43,7 @@ JavaScript 规定，每一个构造函数都有一个 prototype 属性，指向�
 
 如果有多个对象的方法，我们可以给原型对象采取对象形式赋值：
 
-```js
+```javascript
 function Star(name, age) {
   this.name = name;
   this.age = age;
@@ -80,7 +80,7 @@ Star.prototype = {
 原型对象中定义的方法（函数）内**this 的指向**为这个方法（函数）的调用者，也就是
 实例对象
 
-```js
+```javascript
 class Xing {
   constructor(name, age) {
     this.name = name;
@@ -102,7 +102,7 @@ console.log(zxc.innerThis() === zxc.outerThis()); // true
 
 如下可查看二者在构造上的区别：
 
-```js
+```javascript
 // 使用构造函数
 function Star(name, age) {
   this.name = name;

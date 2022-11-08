@@ -3,13 +3,13 @@
 - `node app.js` 显式的告诉 shell 使用 node 运行 app.js  
   可以使用 shebang 嵌入要运行的 js 文件的首行来告诉操作系统使用那个解释器运行脚
   本：
-  ```js
+  ```javascript
   #!/usr/bin/node
   // 你的代码
   ```
   以上，我们显式地给出了解释器的绝对路径。 并非所有操作系统的 bin 文件夹中都有
   node，但都应该有 env。 您可以告诉操作系统使用 node 为参数运行 env：
-  ```js
+  ```javascript
   #!/usr/bin/env node
   // 你的代码
   ```
