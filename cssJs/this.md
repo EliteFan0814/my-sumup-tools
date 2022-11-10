@@ -174,3 +174,62 @@ var fn2 = obj.bar2;
 // 再根据 fn2()≈fn2.call(undefined) 得出 x 中的 this 是 undefined (严格模式下)
 console.log(fn2()() == undefined); // true
 ```
+
+再看一个例子：
+
+```javascript
+var o = { prop: 37 };
+
+function independent() {
+  return this.prop;
+}
+
+let independent2 = () => {
+  return this.prop;
+};
+o.f = independent;
+o.f2 = independent2;
+
+console.log(o.f()); // 37
+console.log(o.f2()); // undefined
+```
+
+### 类中的 this
+
+和其他普通函数一样，类的实例的方法中的 this 值取决于它们如何被调用，有时，改写这
+个行为，让类中的 this 值总是指向这个类实例会很有用。为了做到这一点，可在构造函数
+中绑定类方法。
+
+仔细看下题：
+
+```javascript
+class Car {
+  constructor() {
+    this.type = "实例的车";
+    this.boot = this.boot.bind(this);
+  }
+  boot() {
+    console.log("原型方法：启动！type是：" + this.type);
+  }
+  boot2() {
+    console.log("原型方法：启动！type是：" + this.type);
+  }
+  static trademark() {
+    console.log("每辆车都有自己的品牌");
+  }
+}
+
+let car = new Car();
+let boot = car.boot;
+let boot2 = car.boot2;
+
+// boot 绑定 this 到实例上，所以两种调用方式 this 都指向实例对象
+car.boot(); // "原型方法：启动！type是：实例的车"
+boot(); //  "原型方法：启动！type是：实例的车"
+
+// boot2 未绑定 this 到实例上，
+// 第一个的 this 指向实例对象
+// 第二个的 this 指向undefined，又因为 class 是严格模式下执行的，所以undefined不会转向 window 从而报错
+car.boot2(); //  "原型方法：启动！type是：实例的车"
+boot2(); //  "TypeError: Cannot read properties of undefined (reading 'type')"
+```
