@@ -1,13 +1,4 @@
----
-title: javaScript 中的 this
-date: 2019-04-16 11:49:33
-tags:
-  - ES6
-  - call
-  - apply
-  - 箭头函数
-  - this
----
+## javaScript 中的 this
 
 #### this 的值
 
