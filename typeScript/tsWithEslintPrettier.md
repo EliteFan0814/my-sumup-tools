@@ -22,7 +22,7 @@
    - 手动创建.eslintrc.js 配置文件，
    - 也可以通过命令行`npm init @eslint/config`生成你想要的配置  
      这是我通过`npm init @eslint/config`生成的.eslintrc.js：
-   ```js
+   ```javascript
    module.exports = {
      env: {
        browser: true,
@@ -47,7 +47,7 @@
      个**
 4. 在.eslintrc.js "rules"配置中配置 prettier 相关规则：
 
-   ```js
+   ```javascript
    // 例如这样
      rules: {
        // 配置ts环境下的eslint规则
@@ -68,7 +68,7 @@
 
 5. 最终配置：
 
-   ```js
+   ```javascript
    module.exports = {
      env: {
        browser: true,
@@ -109,7 +109,7 @@
 6. 开启保存时使用 eslint 自动格式化功能：  
    在 vscode 的设置配置文件中配置如下选项：
 
-   ```json
+   ```javascripton
      "editor.codeActionsOnSave": {
        "source.fixAll.eslint": true
      },
