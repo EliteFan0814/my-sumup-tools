@@ -22,7 +22,7 @@
   - [VUE3 自行构建 sfc 遇到的坑](vue/vue3-sfc.md)
   - [VUE3 v-model 的实现](vue/v-model.md)
   - [VUE3 使用总结](vue/vue3.md)
-  - [VUE2 小技巧](vue/vue-trick.md)
+  - [VUE2 小技巧](vue/vue2-trick.md)
   - [VUE-CLI](vue/vue-cli.md)
 - [vite](vite/README.md)
   - [vite](vite/vite.md)

@@ -36,15 +36,27 @@ var obj = {
   test: test,
 };
 var obj2 = new Test2();
+
+var arr = [test, new Test2()];
+
+// ----- 以下各调用方式中的this值就是call()中的第一个参数 -----
+
 // 纯粹的函数调用
-test(); // 打印 0 该式等价于：test.call(undefined)
+test(); // 打印 0 该式可看作：test.call(undefined)
+
 // 作为对象方法的调用
-obj.test(); // 打印 1 该式等价于：obj.test.call(obj)
+obj.test(); // 打印 1 该式可看作：obj.test.call(obj)
+
 // call 调用 或 apply 调用
-obj.test.call(); // 打印 0 该式等价于：obj.test.call(undefined)
+obj.test.call(); // 打印 0 该式可看作：obj.test.call(undefined)
 obj.test.call(obj); // 打印 1
+
 // 作为构造函数调用
-console.log(obj2.y); // 打印 2
+console.log(obj2.y); // 打印 2 该式可看作：obj2.y.call(obj2)
+
+// 在数组中
+arr[0](); // 打印 undefined 该式可看作 arr.0.call(arr)
+arr[1].y; // 值为 2 该式可看作 arr[1].y.call(arr[1])
 ```
 
 以上我们最常见到的是类似 `test(arg1,arg2, ...)` `obj.test(arg1,arg2, ...)` 这样
@@ -104,9 +116,43 @@ tool 方法用箭头函数定义，tool2 方法用普通函数定义。
 this 值的判断条件并 **不是对象**，而是 **所在作用域** ，js 只有 **函数作用域**
 和 **全局作用域** （这里先说 ES5，ES6 暂不讨论）所以可以这样理解： **箭头函数中
 必须通过查找作用域来确定其 this 值，简单来说就是：箭头函数中 this 绑定的是距它最
-近一层非箭头函数的 this 值。**
+近一层非箭头函数作用域的 this 值。**
 
 箭头函数 tool 往外一层就是全局作用域了，所以 tool 中的 this 就是 window 。
 
 这样理解还是有点复杂，再简化一下：**箭头函数里没有 this ，如果里面出现 this ，就
 向上查找最近的 this 值来使用。**
+
+再来看一个例子：
+
+```js
+var obj = {
+  bar: function () {
+    var x = () => this;
+    return x;
+  },
+};
+
+var fn = obj.bar();
+// 距离箭头函数 x 最近的非箭头函数作用域是 obj.bar()
+// 再根据 obj.bar()≈obj.bar.call(obj) 得出 x 中的 this 是 obj
+console.log(fn() === obj); // true
+
+var fn2 = obj.bar;
+// 距离箭头函数 x 最近的非箭头函数作用域是 fn2()
+// 再根据 fn2()≈fn2.call(undefined) 得出 x 中的 this 是 window (非严格模式下)
+console.log(fn2()() == window); // true
+
+// 严格模式下
+var obj = {
+  bar: function () {
+    "use strict";
+    var x = () => this;
+    return x;
+  },
+};
+var fn2 = obj.bar;
+// 距离箭头函数 x 最近的非箭头函数作用域是 fn2()
+// 再根据 fn2()≈fn2.call(undefined) 得出 x 中的 this 是 undefined (严格模式下)
+console.log(fn2()() == undefined); // true
+```
