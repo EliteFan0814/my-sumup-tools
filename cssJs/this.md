@@ -205,6 +205,9 @@ class Car {
   boot2() {
     console.log("原型方法：启动！type是：" + this.type);
   }
+  boot3 = () => {
+    console.log("原型方法：启动！type是：" + this.type);
+  };
   static trademark() {
     console.log("每辆车都有自己的品牌");
   }
@@ -213,6 +216,7 @@ class Car {
 let car = new Car();
 let boot = car.boot;
 let boot2 = car.boot2;
+let boot3 = car.boot3;
 
 // boot 绑定 this 到实例上，所以两种调用方式 this 都指向实例对象
 car.boot(); // "原型方法：启动！type是：实例的车"
@@ -223,4 +227,8 @@ boot(); //  "原型方法：启动！type是：实例的车"
 // 第二个的 this 指向undefined，又因为 class 是严格模式下执行的，所以undefined不会转向 window 从而报错
 car.boot2(); //  "原型方法：启动！type是：实例的车"
 boot2(); //  "TypeError: Cannot read properties of undefined (reading 'type')"
+
+// boot3用箭头函数定义
+car.boot3(); // "原型方法：启动！type是：实例的车"
+boot3(); //  "原型方法：启动！type是：实例的车"
 ```
