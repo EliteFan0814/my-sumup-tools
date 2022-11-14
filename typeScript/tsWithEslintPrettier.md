@@ -45,14 +45,30 @@
 3. 执行 `npm install -D prettier eslint-plugin-prettier eslint-config-prettier`
    - .eslintrc.js 中配置"extends"：添加 plugin:prettier/recommended 到**最后一
      个**
-4. 在.eslintrc.js "rules"配置中配置 prettier 相关规则：
+4. 在.eslintrc.js "rules"配置中配置 prettier 相关的检测规则：
 
    ```javascript
    // 例如这样
      rules: {
        // 配置ts环境下的eslint规则
        "@typescript-eslint/no-var-requires": "warn",
-       // 如下是在eslint中配置prettier相关规则
+       /*
+        如下是在eslint中配置prettier相关规则
+        注意，这里配置的是 eslint 要按照什么样的prettier样式来检查代码
+
+         比如下面配置的意思就是：
+         如果不按照
+        {
+           singleQuote: false,
+           tabs: false,
+           endOfLine: "auto",
+           trailingComma: "es5",
+           proseWrap: "always",
+         }
+         这个规则显示的代码就以警告处理
+
+         而具体怎么格式化代码还需单独配置到 prettierrc.json 文件中
+       */
        "prettier/prettier": [
          "warn",
          {
