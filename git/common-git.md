@@ -1,8 +1,17 @@
 ## git 常用命令
 
 ```bash
+# 在本地把 git@github.com:xxx/xx.git 命名为 origin 来添加远程仓库地址
+# 同一个本地仓库可以添加多个远程仓库
+git remote add origin git@github.com:xxx/xx.git
+git remote add origin2 git@github.com:yyy/yy.git
+# 设置当前分支的上游分支为远程origin2的branch2分支 && 推送
+git push -u origin master
+git push -u origin2 branch2
+
 # 更新远程分支列表
 git remote update origin -p
+
 # 修改本地分支名
 git branch -m old_branch new_branch
 ```
@@ -35,14 +44,30 @@ build/
 build/*
 # 忽略 doc/notes.txt, 不包括 doc/server/arch.txt
 doc/*.txt
-# 忽略在 doc 文件夹下的所有 .pdf 文件 
+# 忽略在 doc 文件夹下的所有 .pdf 文件
 doc/**/*.pdf
 git checkout -b new-branch
 # 做完一系列add commit 操作之后，设置上游仓库地址
 git push --set-upstream origin new-branch
 ```
 
+## git 回滚相关
+
+```bash
+# 显示提交日志
+git log
+# 查看HEAD 指向的历史清单
+git reflog
+# 回滚到指定版本（此操作危险，会直接把你add但没commit的文件删除掉）
+git reset --hard 历史版本号
+```
+
 ## 清空本地保存的用户名和密码(管理员权限)
+
 ```bash
 git config --system --unset credential.helper
 ```
+
+## git checkout xxx
+
+1. 从 A 分支检出到 B 分支时，A 分支处于 added modified 状态的文件也会一同转移到 B 分支
