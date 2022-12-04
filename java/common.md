@@ -5,6 +5,25 @@
 - 方法一：把所有 元\*100 变成 分 来表示，单位用 int
 - 方法二：使用 BigDecimal 类(大的十进制数字)
 
+### java 重写(override)和重载(overload)
+
+1. 重写是子类对父类的允许访问的方法的实现过程进行重新编写, 返回值和形参都不能改变。
+2. 重载是在一个类里面，方法名字相同，而参数不同。返回类型可以相同也可以不同。
+
+### 内部类与一个.java 文件定义多个类
+
+#### 什么是内部类
+
+定义：定义在另一个类的内部的类称为内部类(Nested Class)
+
+#### 一个.java 文件定义多个类
+
+一个.java 文件可以定义多个类，但只能有一个 public 的类，并且 public 的类名必须与文件名相一致。一个文件中可以不含 public
+类，如果只有一个非 public 类，此时可以跟文件名不同  
+此 java 文件被编译时会按定义类的个数产生同样多个.class 文件
+
+#### 一个.java 文件定义多个类
+
 ### 使用命令行编译运行 java 程序
 
 #### 环境变量和系统属性（jvm 中独有的属性）
@@ -63,6 +82,6 @@ public class StringIsBlank {
 # 告诉 javac 所引用的三方类库的位置
 javac -classpath commons-lang-3-3.9.jar StringIsBlank.java
 # StringIsBlank运行所需要的类在 commons-lang-3-3.9.jar 和当前文件夹内进行寻找 -classpath 可简写为 -cp
-# 在windows上使用;代替:
+# 在windows系统上使用;代替:符号
 java -classpath commons-lang-3-3.9.jar:. StringIsBlank 1 2 3
 ```
