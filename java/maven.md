@@ -85,3 +85,72 @@ C:\Users\Elite Fan\IdeaProjects\overload-constructors\target\classes"
 2. maven 中央仓库，按照 groupId/artifactId/version 的约定为所有包编号
 3. maven 本地仓库放在~/.m2 文件夹中
 4. 解决传递性依赖问题，不允许同名不同版本的包同时出现，依赖冲突就近选择
+
+在命令行中使用`mvn dependency:tree`查看解决包冲突后的依赖树，maven 依赖冲突时使用就近选择方式  
+例如如下 ABCD 四个包的依赖关系：  
+A0.1>B0.2>C0.2  
+D0.2>C0.1  
+maven 最终会选择加载 C0.1 这个包，这就会出现新的问题，比如 C0.1 版本里缺失 C0.2 中新增的方法，运行时就会报错。
+
+1. 解决方法 1：直接在 pom.xml 中引入你想要的版本  
+   直接引入我想要的 C0.2 版本
+
+```xml
+<dependencies>
+        <dependency>
+            <groupId>AA.AAA.AAAA</groupId>
+            <artifactId>A</artifactId>
+            <version>0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>DD.DDD.DDDD</groupId>
+            <artifactId>D</artifactId>
+            <version>0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>CC.CCC.CCCC</groupId>
+            <artifactId>C</artifactId>
+            <version>0.2</version>
+        </dependency>
+</dependencies>
+```
+
+2. 解决方法 2：排除某个包的某个依赖(idea 中可以使用 maven helper 插件)
+
+```xml
+<dependencies>
+        <dependency>
+            <groupId>AA.AAA.AAAA</groupId>
+            <artifactId>A</artifactId>
+            <version>0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>DD.DDD.DDDD</groupId>
+            <artifactId>D</artifactId>
+            <version>0.2</version>
+            <exclusions>
+                <groupId>CC.CCC.CCCC</groupId>
+                <artifactId>C</artifactId>
+                <version>0.2</version>
+            </exclusions>
+        </dependency>
+</dependencies>
+```
+
+maven 的 pom.xml 的 dependency 中的 scope 属性的作用
+
+```xml
+
+<dependency>
+    <groupId>org.junit.jupiter</groupId>
+    <artifactId>junit-jupiter-api</artifactId>
+    <version>5.6.0</version>
+    <scope>test</scope>
+</dependency>
+```
+
+scope 的取值：
+
+1. test，仅在测试环境加载当前包
+2. compile，编译和运行时都加载当前包
+3. provided，仅在编译的时候使用当前包
