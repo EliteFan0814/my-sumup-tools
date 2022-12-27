@@ -47,6 +47,7 @@
   - [express](frontendTools/express.md)
 - [java](java/README.md)
   - [java 常用](java/common.md)
+  - [intellij IDEA](java/intellijIDEA.md)
   - [多态](java/polymorphic.md)
   - [java包管理](java/maven.md)
 - [命令行](commandLine/README.md)
