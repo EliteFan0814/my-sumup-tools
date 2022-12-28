@@ -67,11 +67,24 @@ git reset --hard 历史版本号
 
 ## 清空本地保存的用户名和密码(管理员权限)
 
-
 ```bash
 git config --system --unset credential.helper
 ```
 
-## git checkout xxx
+## git checkout xxx 注意事项
 
-1. 从 A 分支检出到 B 分支时，A 分支处于 added modified 状态的文件也会一同转移到 B 分支
+1. 从 A 分支检出到 B 分支时，A 分支处于 added modified 状态的文件也会一同转移到
+   B 分支
+
+## git diff 分析文件差异
+
+**注意事项**：
+
+1. git diff 比较的是【暂存区快照】和【工作目录】之间的差异
+2. git diff --staged 比较的是【暂存区快照】和【最后一次提交的文件】之间的差异
+
+## git rm 移除文件
+
+1. git rm xxx 从已跟踪清单（暂存区）【移出文件】并从当前目录（磁盘）【删除文件】
+2. git rm --cached xxx 从 已跟踪清单（暂存区）【移出文件】但并不从当前目录（磁盘
+   ）删除文件
