@@ -21,28 +21,31 @@ git branch -m old_branch new_branch
 ## .gitignore 规则
 
 ```bash
-# 所有空行和以 # 开头的行都会忽略
-# 以（/）开头防止递归
-# 使用两个星号（**) 表示匹配任意中间目录
+# 所有空行或以 # 开头的行都会忽略
+# 匹配模式可以以（/）开头防止递归。
+# 匹配模式可以以（/）结尾指定目录。
+# 要忽略指定模式以外的文件或目录，可以在模式前加上叹号（!）取反
 # []中使用 - 表示范围： [0-9] 表示匹配所有 0 到 9 的数字
-# 问号（?）只匹配一个任意字符
 # [abc]匹配 a 或 b 或 c
+# 问号（?）只匹配一个任意字符
 # 星号（*）匹配零个或多个任意字符
+# 使用两个星号（**) 表示匹配任意中间目录。比如 a/**/z 可以匹配 a/z 、 a/b/z 或 a/b/c/z 等
 
+# 以下【当前目录】指.gitignore文件所在目录
 
 # 忽略 .a 文件
 *.a
-# 但否定忽略 lib.a, 尽管已经在前面忽略了 .a 文件
+# 但跟踪所有的 lib.a，即便你在前面忽略了 .a 文件
 !lib.a
-# 仅在当前目录下忽略 TODO 文件夹， 但不包括子目录下的 subdir/TODO
+# 仅忽略当前目录下 TODO 文件/文件夹， 但不包括子目录下的 subdir/TODO
 /TODO
-# 递归忽略所有层级的 TODO 文件夹
+# 递归忽略所有层级的 TODO 文件/文件夹
 TODO
-# 忽略 build/ 文件夹下的所有文件
+# 忽略任何目录下名为 build 的文件夹
 build/
-#忽略build文件夹下的所有文件，但不包括build文件夹本身
+# 忽略当前目录下 build 文件夹下的所有文件，但不包括 build文 件夹本身
 build/*
-# 忽略 doc/notes.txt, 不包括 doc/server/arch.txt
+# 忽略当前目录下 doc/notes.txt, 不包括 doc/server/arch.txt
 doc/*.txt
 # 忽略在 doc 文件夹下的所有 .pdf 文件
 doc/**/*.pdf
@@ -63,6 +66,7 @@ git reset --hard 历史版本号
 ```
 
 ## 清空本地保存的用户名和密码(管理员权限)
+
 
 ```bash
 git config --system --unset credential.helper
