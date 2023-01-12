@@ -49,6 +49,7 @@
   - [java 常用](java/common.md)
   - [intellij IDEA](java/intellijIDEA.md)
   - [多态](java/polymorphic.md)
-  - [java包管理](java/maven.md)
+  - [java 包管理](java/maven.md)
+  - [sql 查询语言](java/dataBase.md)
 - [命令行](commandLine/README.md)
   - [命令行 常用](commandLine/common.md)
