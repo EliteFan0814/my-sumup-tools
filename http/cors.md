@@ -64,40 +64,44 @@ Access-Control-Expose-Headers：可选值 XMLHttpRequest 对象的 getResponseHe
 
 问题描述：同一张图片，先用 'img' 标签去加载了，然后再在 JS 代码中，创建一个
 'img' 并且设置了 crossOrigin 的跨域属性为 'anonymous'，那么在 JS 中创建的 'img'
-就会出现访问图片而产生跨域的问题
+就会出现访问图片而产生跨域的问题。【服务器必须先配置类似
+Access-Control-Allow-Origin: \*这样的跨域权限配置】
 
 ```html
-  <div class="img-wrap">
-    <img src="https://tenfei05.cfp.cn/creative/vcg/veer/1600water/veer-164825979.jpg" alt="通过src加载">
-    <img src="https://s2.loli.net/2022/02/17/xF4DmVhKZI9ELaj.png" crossorigin>
-    <img src="" class="after-processing">
-  </div>
-  <script>
-    let image = undefined
-    let imageDataUrl = undefined
-    // 图片转换为base64格式
-    function getBase64Image(imgUrl) {
-      image = new Image();
-      image.src = imgUrl
-      // 如果不设置crossorigin 则将image传入canvas则会报
-      // Tainted canvases may not be exported.(受污染的画布可能无法导出)错误
-      image.crossOrigin = "Anonymous";
-      image.addEventListener("load", imageReceived, false);
-      image.onerror = function (e) {
-        console.log(e)
-      }
-    }
-    function imageReceived() {
-      let canvas = document.createElement("canvas");
-      let ctx = canvas.getContext("2d");
-      canvas.width = image.width;
-      canvas.height = image.height;
-      console.log(image)
-      ctx.drawImage(image, 0, 0, image.width, image.height);
-      imageDataUrl = canvas.toDataURL("image/png"); // 可选其他值 image/jpeg
-      let afterProcessing = document.getElementsByClassName("after-processing")
-      afterProcessing[0].src = imageDataUrl
-    }
-    getBase64Image("https://s2.loli.net/2022/02/17/xF4DmVhKZI9ELaj.png")
-  </script>
+<div class="img-wrap">
+  <img
+    src="https://tenfei05.cfp.cn/creative/vcg/veer/1600water/veer-164825979.jpg"
+    alt="通过src加载"
+  />
+  <img src="https://s2.loli.net/2022/02/17/xF4DmVhKZI9ELaj.png" crossorigin />
+  <img src="" class="after-processing" />
+</div>
+<script>
+  let image = undefined;
+  let imageDataUrl = undefined;
+  // 图片转换为base64格式
+  function getBase64Image(imgUrl) {
+    image = new Image();
+    image.src = imgUrl;
+    // 如果不设置crossorigin 则将image传入canvas则会报
+    // Tainted canvases may not be exported.(受污染的画布可能无法导出)错误
+    image.crossOrigin = "Anonymous";
+    image.addEventListener("load", imageReceived, false);
+    image.onerror = function (e) {
+      console.log(e);
+    };
+  }
+  function imageReceived() {
+    let canvas = document.createElement("canvas");
+    let ctx = canvas.getContext("2d");
+    canvas.width = image.width;
+    canvas.height = image.height;
+    console.log(image);
+    ctx.drawImage(image, 0, 0, image.width, image.height);
+    imageDataUrl = canvas.toDataURL("image/png"); // 可选其他值 image/jpeg
+    let afterProcessing = document.getElementsByClassName("after-processing");
+    afterProcessing[0].src = imageDataUrl;
+  }
+  getBase64Image("https://s2.loli.net/2022/02/17/xF4DmVhKZI9ELaj.png");
+</script>
 ```
