@@ -5,5 +5,5 @@
 | ctrl+alt+B   | 查看子类           |
 | alt+shift+↑↓ | 上下移动当前行     |
 | alt+insert   | generator 快速生成 |
-|              |                    |
+| ctrl+alt+F7             |                    |
 |              |                    |
