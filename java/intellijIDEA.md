@@ -7,3 +7,7 @@
 | alt+insert   | generator 快速生成 |
 | ctrl+alt+F7  |                    |
 | ctrl+F12     | 查看当前文件结构   |
+
+### IDEA 中 Terminal 使用 vim 编辑后退出问题
+
+直接按 esc 会和 idea 的快捷键重合，可以使用 ctrl+c 退出 vim 的编辑模式
