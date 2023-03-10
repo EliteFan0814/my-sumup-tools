@@ -62,4 +62,83 @@ Arrays.sort(strings, Comparator.comparingInt(String::length));
 表达式可以传递到函数式接口，java 并没有为语言增加函数类型，其实像 lambda 表达式
 所能做的也只是转换为函数式接口。
 
-java api 在java.util.function 包中定义了很多非常通用的函数式接口。
+java api 在 java.util.function 包中定义了很多非常通用的函数式接口。
+
+### 方法引用
+
+```java
+import javax.swing.Timer;
+// ······
+
+public class Main {
+    public static void main(String[] args) {
+        // 1 构造类的使用方式太麻烦就不写了
+        // 2 普通使用方式
+        var timer = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println(e);
+            }
+        });
+        // 3 使用lambda表达式
+        var timer1 = new Timer(1000, e -> System.out.println(e));
+        // 4 使用方法引用
+        var timer2 = new Timer(1000, System.out::println);
+    }
+}
+```
+
+`System.out::println`就是一个方法引用，它指示编译器生成一个函数式接口的实例，覆
+盖这个接口的抽象方法来调用给定的方法，本质就是上例中第二种方式。
+
+### 构造器引用
+
+```java
+public class Main {
+    public static class Person {
+        private String name;
+        private int age;
+
+        public Person(String name) {
+            this.name = name;
+        }
+
+        @Override
+        public String toString() {
+            return "Person{" +
+                    "name='" + name + '\'' +
+                    ", age=" + age +
+                    '}';
+        }
+    }
+
+    public static void main(String[] args) {
+        ArrayList<String> names = new ArrayList(Arrays.asList("樊晓超", "宋晓青", "梵穆圣"));
+        Stream<Person> stream = names.stream().map(Person::new);
+        Person[] people = stream.toArray(Person[]::new);
+        System.out.println(Arrays.toString(people));
+    }
+}
+```
+
+### lambda 表达式的变量作用域
+
+lambda 分三个部分：
+
+1. 参数
+2. 代码块
+3. 自由变量的值，指非参数而且不在代码块中定义的变量
+
+这个自由变量有一个限制：必须是不会改变的变量，也就是说必须是一个事实最终变量。  
+lambda 表达式中使用 this 时，是指创建这个 lambda 表达式的方法的 this，而不是这个
+lambda 表达式。  
+lambda 表达式就是闭包。
+
+```java
+public static void countDown(int start, int delay) {
+    ActionListener listener = event -> {
+        System.out.println(start);
+    };
+    new Timer(delay, listener).start();
+}
+```
