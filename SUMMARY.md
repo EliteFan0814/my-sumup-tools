@@ -50,6 +50,7 @@
 - [java](java/README.md)
   - [java 常用](java/common.md)
   - [lambda 表达式](java/lambda.md)
+  - [java 字符串](java/string.md)
   - [intellij IDEA](java/intellijIDEA.md)
   - [多态](java/polymorphic.md)
   - [java 包管理](java/maven.md)
