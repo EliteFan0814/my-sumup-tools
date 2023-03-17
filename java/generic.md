@@ -131,4 +131,57 @@ public class Main {
 
 我们发现 `ArrayList<String> stringArrayList = new ArrayList<>();`的本质还
 是`ArrayList var2 = new ArrayList()`/`NEW java/util/ArrayList`，所传递的泛型类被
-擦除了。因为 jvm 最终运行的是生成的.class 文件，所以说 java 的泛型是“假泛型”
+擦除了。因为 jvm 最终运行的是生成的.class 文件，所以说 java 的泛型是“假泛型”，是
+编译期泛型，只在编译期进行泛型类型检查。
+
+#### 擦除带来的问题
+
+你会发现如下代码编译器会发出 Error 警告：  
+'foo(List<String>)' clashes with 'foo(List<Integer>)'; both methods have same
+erasure  
+这就是擦除带来的问题，两个 foo 方法并不会重载，而是会报 same erasure 错误。
+
+```java
+public class Main {
+    public  void foo(List<String> strings){};
+    public  void foo(List<Integer> ints){};
+}
+```
+
+让我们再看一个绕过编译器检查的例子：
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        testObject(new Cat()); // 可以
+        testArray(new Cat[2]); // 可以
+        testList(new ArrayList<Cat>()); // 报错 ArrayList<Cat>并不是ArrayList<Animal>的子类
+
+        // 绕过编译器检查
+        ArrayList<Animal> list = new ArrayList<>();
+        ArrayList rawList = list;
+        rawList.add("字符串"); // 可以
+        rawList.add(123); // 可以
+        rawList.add('1'); // 可以
+
+        // 数组的真类型安全，编译期不报错，运行时还是会报错
+        String[] StringArray = new String[2];
+        testArraySafety(StringArray); // 编译期不报错，运行时报错
+
+        // 编译和运行都不会报错
+        List<String> listString = new ArrayList<>();
+        testListSafety((ArrayList)listString); // 强制类型转换绕过编译器报错，运行也不会报错
+    }
+    public static void testObject(Animal animal){};
+    public static void testArray(Animal[] animal){};
+    public static void testList(ArrayList<Animal> animal){};
+    public static void testArraySafety(Object[] array){
+      array[0] = 1;
+    };
+    public static void testListSafety(List<Object> list){
+        list.add(1);
+    };
+    static class Animal{}
+    static class Cat extends Animal{};
+}
+```
