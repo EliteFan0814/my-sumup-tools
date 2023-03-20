@@ -185,3 +185,46 @@ public class Main {
     static class Cat extends Animal{};
 }
 ```
+
+#### 泛型的绑定
+
+```java
+public class Main {
+    public static void main(String[] args) {
+// 实现一个比较方法，可以传递任意Number类型
+        max(1, 2);
+        max(25555L, 58L);
+        max(2.5F, 5.8F);
+        max(7.8D, 8.999D);
+
+        maxGenericity(1, 2);
+        maxGenericity(25555L, 58L);
+        maxGenericity(2.5F, 5.8F);
+        maxGenericity(7.8D, 8.999D);
+    }
+
+    public static int max(int a, int b) {
+        return Math.max(a, b);
+    }
+
+    public static Long max(Long a, Long b) {
+        return Math.max(a, b);
+    }
+
+    public static Float max(Float a, Float b) {
+        return Math.max(a, b);
+    }
+
+    public static Double max(Double a, Double b) {
+        return Math.max(a, b);
+    }
+    // 传递的参数必须是实现了Comparable接口的类
+    public static <T extends Comparable> T maxGenericity(T a, T b) {
+        return a.compareTo(b) >= 0 ? a : b;
+    }
+    // 第一个参数是元素类型为T的List列表，第二个参数c需满足c本身或父类为T的实现了Comparator的类
+    public static <T> void sort(List<T> list, Comparator<? super T> c) {
+        // xxx
+    }
+}
+```
