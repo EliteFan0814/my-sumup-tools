@@ -255,6 +255,31 @@ const resArr = uniqueArr(tempArr);
 console.log(resArr); // [1, 2, 3, "3", 4, "4", 5, 6]
 ```
 
+## 数组取交集/差集
+
+```javascript
+// 取交集
+function intersection(a, b) {
+  return a.filter((v) => b.includes(v));
+}
+// 取差集
+function difference(a, b) {
+  return a.concat(b).filter((v) => !a.includes(v) || !b.includes(v));
+}
+const a = [1, 2, 3, 4, 5];
+const b = [1, 2, 3, 7, 8, 9];
+intersection(a, b); // [1,2,3]
+difference(a, b); // [4,5,7,8,9]
+```
+
+## 数组 a 是否包含数组 b
+
+```javascript
+arrayIncludes(a,b){
+  return b.every(val=>a.includes(val));
+}
+```
+
 ## 下划线转驼峰命名
 
 ```javascript
