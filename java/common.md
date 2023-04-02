@@ -1,3 +1,10 @@
+### java 访问控制修饰符
+
+1. 仅对本类可见----private
+2. 对外部完全可见----public
+3. 对本包和所有子类可见----protected
+4. 对本包可见----默认，不需要任何修饰符
+
 ### java 检测字符串是否相等
 
 一定使用 equals 方法，不要使用 ==
@@ -7,7 +14,7 @@ String s = "Hello";
 String sb = "Hello";
 "hello".equals(s); // false
 "hello".equalsIgnoreCase(s); // true
-s == sb; // 不确定 
+s == sb; // 不确定
 ```
 
 **你可以简单地认为在 java 中，字符串存放在公共的存储池中，字符串变量指向存储池中

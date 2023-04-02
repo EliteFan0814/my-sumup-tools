@@ -26,7 +26,7 @@ description: CSS常用样式集合
 ```css
 .bg {
   background-color: #fff;
-  background-image: url('fpc.png');
+  background-image: url("fpc.png");
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
@@ -35,11 +35,20 @@ description: CSS常用样式集合
 ## 绝对定位居中
 
 ```css
-/*水平居中*/
+/*水平居中1*/
+/*此方法的问题：定位元素的默认可分配的宽度只有50%的父positioned元素宽度*/
 .horizontal-center {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+}
+/*水平居中2*/
+.horizontal-center {
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  width: fit-content;
+  margin-inline: auto;
 }
 /*垂直居中*/
 .vertical-center {
@@ -47,12 +56,25 @@ description: CSS常用样式集合
   top: 50%;
   transform: translateY(-50%);
 }
-/*水平垂直居中*/
+/*水平垂直居中1*/
 .absolute-center {
+  width: 600px;
+  height: 400px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+/*水平垂直居中2*/
+.absolute-center {
+  width: 600px;
+  height: 400px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
 }
 ```
 
@@ -124,7 +146,7 @@ css 代码：
 }
 .left-name .name::after {
   display: inline-block;
-  content: '';
+  content: "";
   width: 100%;
 }
 ```
@@ -211,7 +233,10 @@ div {
 
 ```html
 <div class="img-wrap">
-  <img src="https://img2.baidu.com/it/u=1612138888,1794405442&fm=26&fmt=auto&gp=0.jpg" alt="" />
+  <img
+    src="https://img2.baidu.com/it/u=1612138888,1794405442&fm=26&fmt=auto&gp=0.jpg"
+    alt=""
+  />
 </div>
 ```
 
@@ -233,8 +258,8 @@ div {
 
 ## 不同比例图标的统一显示
 
-有时候界面会用循环来做一个点击列表，列表每一项一般会有小图标，但是每一项的图标比例可能并不一致，这时候就需要让它们根据自
-身比例动态调节。  
+有时候界面会用循环来做一个点击列表，列表每一项一般会有小图标，但是每一项的图标比
+例可能并不一致，这时候就需要让它们根据自身比例动态调节。  
 如下示例图，不同尺寸的 icon 都会按自身比例显示在同样大小的红框中而不会变形：
 
 ![示例图](https://i.loli.net/2021/01/08/rsxz4Y5QlB3Wpgn.png)

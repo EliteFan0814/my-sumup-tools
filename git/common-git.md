@@ -88,3 +88,5 @@ git config --system --unset credential.helper
 1. git rm xxx 从已跟踪清单（暂存区）【移出文件】并从当前目录（磁盘）【删除文件】
 2. git rm --cached xxx 从 已跟踪清单（暂存区）【移出文件】但并不从当前目录（磁盘
    ）删除文件
+
+## git commit --amend 把修改合并到上一次提交

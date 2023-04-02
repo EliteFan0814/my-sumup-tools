@@ -51,10 +51,13 @@ alter table table_name {add|drop|modify| column_name{data_type}};
 alter table table_name rename to new_table_name;
 ```
 
-### drop table 删除数据表
-
+###  删除数据表
+1. drop table 删除表，数据和表结构一起删除，快速
+2. truncate table 删除所有数据，保留表结构，不能撤销还原
+3. delete from 是逐行删除速度极慢，不适合大量数据删除
 ```sql
 drop table table_name;
+truncate table table_name;
 ```
 
 ### create/drop index 创建/删除索引
