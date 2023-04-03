@@ -114,3 +114,21 @@ javac -classpath commons-lang-3-3.9.jar StringIsBlank.java
 # 在windows系统上使用;代替:符号
 java -classpath commons-lang-3-3.9.jar:. StringIsBlank 1 2 3
 ```
+
+### java 传参问题
+
+```java
+public class TestParams {
+    public static int a;
+
+    public static void setInt(int a) {
+        a = 888;
+    }
+
+    public static void main(String[] args) {
+        setInt(a);
+//        此处打印的a的值为什么不是888？
+        System.out.println(a);
+    }
+}
+```
