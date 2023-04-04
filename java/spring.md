@@ -142,3 +142,8 @@ public class MyIocContainer {
     }
 }
 ```
+#### spring 是怎么实现的
+- 在xml中定义Bean，或者使用注解定义Bean
+- BeanDefinition的载入和解析
+- Bean 的实例化和依赖注入
+- 对外提供服务
