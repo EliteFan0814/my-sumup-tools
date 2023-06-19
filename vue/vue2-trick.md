@@ -1,21 +1,24 @@
 ## v-for 可以使用对象
 
-**在遍历对象时，会按 Object.keys() 的结果遍历，但是不能保证它的结果在不同的 JavaScript 引擎下都一致。**
+**在遍历对象时，会按 Object.keys() 的结果遍历，但是不能保证它的结果在不同的
+JavaScript 引擎下都一致。**
 
 ```html
 <!-- name:属性名 value:属性值 index:索引 -->
-<div v-for="(value, name, index) in object">{{ index }}. {{ name }}: {{ value }}</div>
+<div v-for="(value, name, index) in object">
+  {{ index }}. {{ name }}: {{ value }}
+</div>
 <script>
   new Vue({
-    el: '#v-for-object',
+    el: "#v-for-object",
     data: {
       object: {
-        title: 'How to do lists in Vue',
-        author: 'Jane Doe',
-        publishedAt: '2016-04-10'
-      }
-    }
-  })
+        title: "How to do lists in Vue",
+        author: "Jane Doe",
+        publishedAt: "2016-04-10",
+      },
+    },
+  });
 </script>
 ```
 
@@ -25,7 +28,12 @@
 
 ```html
 <!-- 普通方式 -->
-<el-input v-model="number" placeholder="请输入数量" @input="handleInput" clearable></el-input>
+<el-input
+  v-model="number"
+  placeholder="请输入数量"
+  @input="handleInput"
+  clearable
+></el-input>
 
 <!-- 箭头函数方式 -->
 <el-input
@@ -41,8 +49,8 @@
 
 ## jsconfig.json
 
-vscode 使用 vetur 插件会弹出不存在 tsconfig.json 或者 jsconfig.json 文件，前者针对 Ts 项目，后者针对普通 js 项目，在项目
-根目录新建 jsconfig.json 文件就行  
+vscode 使用 vetur 插件会弹出不存在 tsconfig.json 或者 jsconfig.json 文件，前者针
+对 Ts 项目，后者针对普通 js 项目，在项目根目录新建 jsconfig.json 文件就行  
 jsconfig.json 文件内容结构如下：
 
 ```javascripton
@@ -63,20 +71,20 @@ jsconfig.json 文件内容结构如下：
 
 ```javascript
 // environment.js
-const isDev = process.env.NODE_ENV == 'development'
+const isDev = process.env.NODE_ENV == "development";
 export default {
-  excelPath: isDev ? 'http://local.host.com/' : 'http://eliteFan.com/',
-  downloadPath: isDev ? 'http://local.host.com/' : 'http://eliteFan.com/'
-}
+  excelPath: isDev ? "http://local.host.com/" : "http://eliteFan.com/",
+  downloadPath: isDev ? "http://local.host.com/" : "http://eliteFan.com/",
+};
 ```
 
 ## eventBus
 
 ```javascript
 //  eventBus.js
-import Vue from 'vue'
+import Vue from "vue";
 
-export default new Vue()
+export default new Vue();
 ```
 
 ```javascript
@@ -115,3 +123,27 @@ post:{
 `<my-componment v-bind="post"></my-componment>`  
  等价于：  
 `<my-componment :id="post.id" :title="post.title" :name="post.name"></my-componment>`
+
+## vue 中实现函数防抖
+
+```javascript
+method:{
+      debounce(funCall, delay = 500) {
+      return function(...args) {
+        let that = this;
+        let _args = args;
+        clearTimeout(funCall.time);
+        funCall.time = setTimeout(function() {
+          funCall.call(that, ..._args);
+        }, delay);
+      };
+    },
+    handleDebounceClick(){
+      const tempDebounceClick = this.debounce(this.creazyClick,1000);
+      tempDebounceClick('参数1','参数2','参数3');
+    },
+    creazyClick(arg1,arg2,arg3){
+      console.log(arg1,arg2,arg3);
+    }
+}
+```
