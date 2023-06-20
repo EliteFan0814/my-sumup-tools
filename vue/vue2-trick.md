@@ -124,11 +124,13 @@ post:{
  等价于：  
 `<my-componment :id="post.id" :title="post.title" :name="post.name"></my-componment>`
 
-## vue 中实现函数防抖
+## vue 中实现函数防抖和节流
+
+函数防抖：同一事件触发 n 秒之后再进行回调处理，n 秒内又被触发的话则重新计时。
 
 ```javascript
 method:{
-      debounce(funCall, delay = 500) {
+  debounce(funCall, delay = 500) {
       return function(...args) {
         let that = this;
         let _args = args;
@@ -145,5 +147,37 @@ method:{
     creazyClick(arg1,arg2,arg3){
       console.log(arg1,arg2,arg3);
     }
+}
+```
+
+函数节流：当持续触发事件时，n 秒内只调用一次事件处理函数。
+
+```javascript
+methods:{
+  throttle(funCall, period = 500) {
+    let last, deferTimer;
+    return function(...args) {
+      let that = this;
+      let _args = args;
+      let now = +new Date();
+      if (last && now < last + period) {
+        clearTimeout(deferTimer);
+        deferTimer = setTimeout(function() {
+          last = now;
+          funCall.call(that, ..._args);
+        }, period);
+      } else {
+        last = now;
+        funCall.call(that, ..._args);
+      }
+    };
+  },
+  handleThrottleClick(){
+    const tempDebounceClick = this.throttle(this.creazyClick,1000);
+    tempDebounceClick('参数1','参数2','参数3');
+  },
+  creazyClick(arg1,arg2,arg3){
+    console.log(arg1,arg2,arg3);
+  }
 }
 ```
