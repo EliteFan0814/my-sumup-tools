@@ -7,7 +7,7 @@
 | alt + insert           | generator 快速生成       |
 | alt + j                | 选中下一个相同内容       |
 | ctrl + shift + alt + j | 选中所有相同内容         |
-| ctrl + alt + F7        |                          |
+| ctrl + alt + F7        | 查看当前类在哪里被使用   |
 | ctrl + F12             | 查看当前类的结构         |
 | ctrl + y               | 删除当前行               |
 | ctrl + '+/-'           | 当前方法展开、折叠       |
@@ -18,6 +18,7 @@
 | ctrl + shift + U       | 大小写转换               |
 | ctrl + shift + Enter   | 补全语句                 |
 | ctrl + alt + B/click   | 查看哪些类实现了当前接口 |
+| ctrl + alt + O         | 优化导入                 |
 
 ### IDEA 中 Terminal 使用 vim 编辑后退出问题
 
