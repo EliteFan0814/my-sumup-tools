@@ -233,10 +233,7 @@ div {
 
 ```html
 <div class="img-wrap">
-  <img
-    src="https://img2.baidu.com/it/u=1612138888,1794405442&fm=26&fmt=auto&gp=0.jpg"
-    alt=""
-  />
+  <img src="https://img2.baidu.com/it/u=1612138888,1794405442&fm=26&fmt=auto&gp=0.jpg" alt="" />
 </div>
 ```
 
@@ -258,8 +255,8 @@ div {
 
 ## 不同比例图标的统一显示
 
-有时候界面会用循环来做一个点击列表，列表每一项一般会有小图标，但是每一项的图标比
-例可能并不一致，这时候就需要让它们根据自身比例动态调节。  
+有时候界面会用循环来做一个点击列表，列表每一项一般会有小图标，但是每一项的图标比例可能并不一致，这时候就需要让它们根据自
+身比例动态调节。  
 如下示例图，不同尺寸的 icon 都会按自身比例显示在同样大小的红框中而不会变形：
 
 ![示例图](https://i.loli.net/2021/01/08/rsxz4Y5QlB3Wpgn.png)
@@ -301,5 +298,92 @@ img {
   background-image: -webkit-linear-gradient(left, #4af175, #4fe3c0, #51dbee);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+```
+
+## 带 css 向右三角形的按钮
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>JS Bin</title>
+    <style>
+      .btn-more {
+        background-color: #7d3f98;
+        border: none;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        padding: 8px 25px;
+        text-align: center;
+        border-radius: 30px;
+        font-size: 16px;
+        position: relative;
+        cursor: pointer;
+      }
+      .btn-more:hover,
+      .btn-more:active,
+      .btn-more:focus {
+        background-color: #511378;
+      }
+      .btn-more:after {
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 6px 0 6px 8px;
+        border-color: transparent transparent transparent #fff;
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    </style>
+  </head>
+
+  <body>
+    <button class="btn-more">more</button>
+  </body>
+</html>
+```
+
+## 带 css 三角形的提示框
+
+```scss
+// <div class="tips">请先阅读并同意协议</div>
+.tips {
+  font-size: 12px;
+  white-space: nowrap;
+  position: absolute;
+  padding: 5px;
+  border: 1px solid red;
+  background-color: #fff;
+
+  &:before,
+  &:after {
+    border: solid transparent;
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+  }
+  &:after {
+    border-width: 7px 7px 0 7px;
+    border-top-color: #fff; /*浅色*/
+    bottom: -7px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  &:before {
+    border-width: 8px 8px 0 8px;
+    border-top-color: red; /*深色*/
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 ```
