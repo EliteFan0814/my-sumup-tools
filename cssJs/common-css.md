@@ -387,3 +387,15 @@ img {
   }
 }
 ```
+
+## 蒙层禁止页面滚动
+
+在蒙层出现的时候滚动页面，如果不加处理，蒙层底部的页面会开始滚动，实际上我们是不希望他进行滚动的，因此需要阻止这种行为。
+最简单的方法： **打开蒙层时给 html/body 添加 overflow: hidden;在关闭蒙层时就移除这个样式**
+
+```js
+// 弹窗蒙层打开时设置：
+document.documentElement.style.overflow = "auto";
+// 弹窗蒙层关闭时设置：
+document.documentElement.style.overflow = "hidden";
+```
