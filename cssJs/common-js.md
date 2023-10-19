@@ -37,8 +37,8 @@ const limitToNumberStr = function (valStr) {
 
 ### 方式 1
 
-示例：{ userName : 'elite' , local : 'china' } 转换为 [{ name : 'userName' ,
-value : 'elite' } , { name : 'local' , value : 'china' }]
+示例：{ userName : 'elite' , local : 'china' } 转换为 [{ name : 'userName' , value : 'elite' } , { name : 'local' ,
+value : 'china' }]
 
 ```javascript
 const objTransToArray = function (obj) {
@@ -55,8 +55,7 @@ const objTransToArray = function (obj) {
 
 ### 方式 2
 
-示例：{ userName : 'elite' , local : 'china' } 转换为 [{ userName : 'elite' } ,
-{ local : 'china' }]
+示例：{ userName : 'elite' , local : 'china' } 转换为 [{ userName : 'elite' } , { local : 'china' }]
 
 ```javascript
 const objTransToArray = function (obj) {
@@ -114,25 +113,17 @@ const width = o.offsetWidth;
 ## js 时间处理
 
 1. 方法 1：  
-   传入一个合法的 date 格式时间数据，返回 {YY, MM, DD, HH, mm, ss}，默认返回当前
-   时间的对象格式  
-   例如：`formatDate(new Date())`返回对象：{ YY: '2021', MM: '01', DD: '12', HH:
-   '09', mm: '56', ss: '55' }
+   传入一个合法的 date 格式时间数据，返回 {YY, MM, DD, HH, mm, ss}，默认返回当前时间的对象格式  
+   例如：`formatDate(new Date())`返回对象：{ YY: '2021', MM: '01', DD: '12', HH: '09', mm: '56', ss: '55' }
 
 ```javascript
 const formatDate = function (date = new Date()) {
   const YY = date.getFullYear() + "";
-  const MM =
-    (date.getMonth() + 1 < 10
-      ? "0" + (date.getMonth() + 1)
-      : date.getMonth() + 1) + "";
+  const MM = (date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1) + "";
   const DD = date.getDate() < 10 ? "0" + date.getDate() : date.getDate() + "";
-  const HH =
-    date.getHours() < 10 ? "0" + date.getHours() : date.getHours() + "";
-  const mm =
-    date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes() + "";
-  const ss =
-    date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds() + "";
+  const HH = date.getHours() < 10 ? "0" + date.getHours() : date.getHours() + "";
+  const mm = date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes() + "";
+  const ss = date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds() + "";
   return { YY, MM, DD, HH, mm, ss };
 };
 ```
@@ -153,13 +144,7 @@ const formatTime = (date) => {
   const minute = date.getMinutes();
   const second = date.getSeconds();
 
-  return `${[year, month, day].map(formatNumber).join("/")} ${[
-    hour,
-    minute,
-    second,
-  ]
-    .map(formatNumber)
-    .join(":")}`;
+  return `${[year, month, day].map(formatNumber).join("/")} ${[hour, minute, second].map(formatNumber).join(":")}`;
 };
 ```
 
@@ -288,4 +273,28 @@ function tuHump(name) {
     return letter.toUpperCase();
   });
 }
+```
+
+## 滚动到页面顶部、底部
+
+```js
+// 返回顶部
+const scrollToTop = () => {
+  const targetDom = document.getElementById("scroll-wrap");
+  if (targetDom) {
+    targetDom.scrollTop = 0;
+  }
+};
+
+// 返回底部
+const scrollToBottom = () => {
+  const targetDom = document.getElementById("scroll-wrap");
+  targetDom.scrollTop = targetDom.scrollHeight;
+};
+const scrollToBottom = () => {
+  const targetDom = document.getElementsByClassName("scroll-wrap");
+  for (let i = 0; i < targetDom.length; i++) {
+    targetDom[i].scrollTop = targetDom[i].scrollHeight;
+  }
+};
 ```
