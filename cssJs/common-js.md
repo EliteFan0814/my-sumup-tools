@@ -298,3 +298,31 @@ const scrollToBottom = () => {
   }
 };
 ```
+
+## 滚动到某个子元素的位置
+
+```html
+<div id="parent">
+  <div class="child" id="child1">1</div>
+  <div class="child" id="child2">2</div>
+  <!-- ...... -->
+  <div class="child" id="child9">9</div>
+  <div class="child" id="child10">10</div>
+</div>
+<script>
+  const parent = document.getElementById("parent");
+  const child = document.getElementById("child4");
+  parent.scrollTo({
+    top: child.offsetTop, //需要父元素设置postion(relative、absolute、fixed)
+    behavior: "smooth",
+  });
+</script>
+```
+
+## 获取两个元素的纵向距离
+
+```js
+let ele1Top = document.getElementById("ele1")?.getBoundingClientRect().top;
+let ele2Top = document.getElementById("ele2")?.getBoundingClientRect().top;
+const distance = ele2Top - ele1Top;
+```
