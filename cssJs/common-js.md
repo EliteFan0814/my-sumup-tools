@@ -370,7 +370,8 @@ function throttle(func, delay) {
 function handle() {
   console.log(Math.random());
 }
-window.addEventListener("scroll", throttle(handle, 1000));
+// 快速点击浏览器进行测试
+window.addEventListener("click", throttle(handle, 1000));
 
 // 使用定时器实现节流
 function throttle(func, delay) {
@@ -389,5 +390,6 @@ function throttle(func, delay) {
 function handle() {
   console.log(Math.random());
 }
-window.addEventListener("scroll", throttle(handle, 1000));
+// 快速点击浏览器进行测试
+window.addEventListener("click", throttle(handle, 1000));
 ```
