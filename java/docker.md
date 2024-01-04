@@ -15,3 +15,4 @@
 - 查看日志 `docker logs [容器名 | 容器ID ]`
   - `docker logs -f [容器名 | 容器ID ] #表示实时的跟踪日志输出`
   - `docker logs --since 30m myredis # 此处 --since 30m 是查看此容器30分钟之内的日志情况。`
+- 复制容器内文件到本地 `docker cp 容器ID:目标路径 本地文件路径`
