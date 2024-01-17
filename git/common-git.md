@@ -90,3 +90,14 @@ git config --system --unset credential.helper
    ）删除文件
 
 ## git commit --amend 把修改合并到上一次提交
+
+## git 设置系统代理
+```git
+<!-- 设置代理 -->
+git config --global http.proxy http://127.0.0.1:7890 
+git config --global https.proxy http://127.0.0.1:7890
+
+<!-- 取消代理 -->
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+```
