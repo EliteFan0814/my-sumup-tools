@@ -399,3 +399,8 @@ document.documentElement.style.overflow = "auto";
 // 弹窗蒙层关闭时设置：
 document.documentElement.style.overflow = "hidden";
 ```
+
+## flex-grow:1 滚动条失效问题
+
+有时候我们需要让在`flex-grow:1`的元素 A 内的元素 B 超出 A 的范围时出现滚动条，但此时在 A 上设置`overflow-y:auto`不管用，
+还是会超出 A 的范围，那么就给 A 加上`height:0`这个 css 就能解决超出不出现滚动条的问题。
