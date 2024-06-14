@@ -54,3 +54,40 @@ onMounted(() => {
   <input ref="inputRef" />
 </template>
 ```
+
+### 使用动态生成的 ref
+
+```javascript
+<template>
+  <div v-for="(item, index) in state.patent_Custom_Descs" :key="index" class="cont-item">
+    <div class="a-t-wrap">
+      <h2>{{ item.pTitle }}</h2>
+      <div class="rewrite"></div>
+    </div>
+    <div>
+      <!-- <vditor :ref="`vditorRefContent${index}`" :content="item.desc" :previewOnly="state.allReadonly"></vditor> -->
+      <vditor
+        :ref="
+          (el) => {
+            setItemRef(el, 'vditorRefContent' + index);
+          }
+        "
+        :content="item.desc"
+        :previewOnly="state.allReadonly"></vditor>
+    </div>
+  </div>
+</template>
+
+<script lang='ts' setup>
+  const iframeRefs = {} as any;
+  const setItemRef = (el: any, key: string) => {
+    if (el) {
+      iframeRefs[key] = el;
+    }
+  };
+  const handleUserSubmit =(index:number){
+    // 这样就可以用ref来操控动态生成的vditor了
+    const tempres = iframeRefs["vditorRefContent" + index].getVditorContentValue();
+  }
+</script>
+```
