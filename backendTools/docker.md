@@ -1,4 +1,8 @@
-### 快捷键
+---
+description: docker学习
+---
+
+## 快捷键
 
 - 查看 latest 镜像具体版本：`docker image inspect 镜像名称:latest | grep -i version`
 - 删除镜像：`docker rmi 镜像ID1 镜像ID2`
@@ -55,7 +59,7 @@ redis redis-server /etc/redis/redis.conf
 docker run -d -p 6379:6379 --name ry-redis -v c:/home/redis/config/redis.conf:/etc/redis/redis.conf -v c:/home/redis/data:/data --log-opt max-size=100m --log-opt max-file=3 redis redis-server /etc/redis/redis.conf
 ```
 
-### Docker 容器没有 vim 命令
+## Docker 容器没有 vim 命令
 
 ```bash
 apt-get update

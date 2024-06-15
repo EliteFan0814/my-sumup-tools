@@ -1,4 +1,8 @@
-### navicat 连接 mysql8 报错：1251
+---
+description: mysql常见问题
+---
+
+## navicat 连接 mysql8 报错：1251
 
 navicat 连接 mysql8.1.0 报错，错误信息：1251- Client does not support authentication protocol requested by
 server;consider upgrading Mysql client。
