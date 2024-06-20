@@ -36,6 +36,7 @@ $ npm create vite@latest
 ```
 
 改换成`winpty npm.cmd create vite@latest`就可以了
+
 ```shell
 fan@DESKTOP-F8A5QC7 MINGW64 /f/projectsMy
 $ winpty npm.cmd create vite@latest
@@ -48,4 +49,31 @@ $ winpty npm.cmd create vite@latest
     lit
     svelte
 
+```
+
+## 老旧项目配置 node-sass 淘宝镜像仓库
+
+```shell
+npm config set sass_binary_site https://npmmirror.com/mirrors/node-sass
+npm config set registry https://registry.npmmirror.com
+```
+
+## 老旧项目安装 chromedriver 报错
+
+报错如下：
+
+```shell
+npm ERR! code ELIFECYCLE
+npm ERR! errno 1
+npm ERR! chromedriver@2.46.0 install: `node install.js`
+npm ERR! Exit status 1
+npm ERR!
+npm ERR! Failed at the chromedriver@2.46.0 install script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+```
+
+原因是 chromedriver 的部分文件被国内网络给墙掉了，执行以下命令，解决方法：
+
+```shell
+npm install chromedriver --chromedriver_cdnurl=http://cdn.npm.taobao.org/dist/chromedriver
 ```
