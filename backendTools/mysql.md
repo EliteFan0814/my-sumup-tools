@@ -1,4 +1,8 @@
-### navicat 连接 mysql8 报错：1251
+---
+description: mysql常见问题
+---
+
+## navicat 连接 mysql8 报错：1251
 
 navicat 连接 mysql8.1.0 报错，错误信息：1251- Client does not support authentication protocol requested by
 server;consider upgrading Mysql client。
@@ -39,7 +43,6 @@ ps:
 > 而%是个通配符，如果 Host=192.168.1.%，那么就表示只要是 IP 地址前缀为“192.168.1.”的客户端都可以连接。如果 Host=%，表示
 > 所有 IP 都有连接权限。
 
-### mysql 配置文件 !includedir /etc/mysql/conf.d/ 含义
-
-在 MySQL 中，!includedir 是一个指令，用于指定一个目录，MySQL 服务器在读取主配置文件时会读取该目录下所有的.conf 文件
-。/etc/mysql/conf.d/ 是一个目录路径，MySQL 服务器会尝试读取这个目录下所有的.conf 文件作为配置文件的一部分。
+> mysql 配置文件 !includedir /etc/mysql/conf.d/ 含义:  
+> 在 MySQL 中，!includedir 是一个指令，用于指定一个目录，MySQL 服务器在读取主配置文件时会读取该目录下所有的.conf 文件
+> 。/etc/mysql/conf.d/ 是一个目录路径，MySQL 服务器会尝试读取这个目录下所有的.conf 文件作为配置文件的一部分。
