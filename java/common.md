@@ -52,6 +52,49 @@ System.out.println(b);// -48
  */
 ```
 
+### i++和++i
+
+```java
+int i = 10;
+i = i++;
+System.out.println(i)// 10
+```
+
+为什么结果是 10 呢，我们将以上代码反编译一下并打开：
+
+```java
+int var1 = 10;
+int var1000 = var1;
+int var2 = var1 + 1;
+var1 = var1000;
+System.out.println(var1);
+```
+
+### &、&&、|、||
+
+& 没有短路效果，会同时将两侧结果都计算出来；  
+&& 有短路效果，如果符号前为 false，符号后的代码不会执行。
+
+| 没有短路效果，会同时将两侧结果都计算出来；  
+|| 有短路效果，如果符号前为 true，符号后的代码不会执行。
+
+```java
+int a = 10;
+int b = 20;
+boolean result01 = (++a>100)&(++b>10);
+System.out.println(result01); // false
+System.out.println(a); // 11
+System.out.println(b); // 21
+
+
+int c = 10;
+int d = 20;
+boolean result02 = (++c>100)&&(++d>10);
+System.out.println(result02); // false
+System.out.println(c); // 11
+System.out.println(d); // 20
+```
+
 ### java 访问控制修饰符
 
 1. 仅对本类可见----private

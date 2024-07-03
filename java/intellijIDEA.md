@@ -2,13 +2,17 @@
 
 | 快捷键                 | 解释                     |
 | ---------------------- | ------------------------ |
+| ctrl + alt + L         | 格式化代码               |
 | ctrl + alt + B         | 查看子类                 |
+| alt + shift + /        | 多行注释                 |
 | alt + shift + ↑↓       | 上下移动当前行           |
+| alt + enter            | 导入包、自动修正代码     |
 | alt + insert           | generator 快速生成       |
 | alt + j                | 选中下一个相同内容       |
 | ctrl + shift + alt + j | 选中所有相同内容         |
 | ctrl + alt + F7        | 查看当前类在哪里被使用   |
 | ctrl + F12             | 查看当前类的结构         |
+| ctrl + d               | 复制当前行到下一行       |
 | ctrl + y               | 删除当前行               |
 | ctrl + '+/-'           | 当前方法展开、折叠       |
 | ctrl + shift + '+/-'   | 全部展开、折叠           |
