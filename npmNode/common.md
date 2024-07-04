@@ -51,7 +51,21 @@ $ winpty npm.cmd create vite@latest
 
 ```
 
-## 老旧项目配置 node-sass 淘宝镜像仓库
+## 老旧项目安装 node-sass 报错
+
+```shell
+npm ERR! code ELIFECYCLE
+npm ERR! errno 1
+npm ERR! node-sass@4.14.1 postinstall: `node scripts/build.js`
+npm ERR! Exit status 1
+npm ERR!
+npm ERR! Failed at the node-sass@4.14.1 postinstall script.
+npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /root/.npm/_logs/2024-07-04T06_56_09_803Z-debug.log
+```
+
+配置淘宝镜像仓库
 
 ```shell
 npm config set sass_binary_site https://npmmirror.com/mirrors/node-sass
@@ -76,4 +90,28 @@ npm ERR! This is probably not a problem with npm. There is likely additional log
 
 ```shell
 npm install chromedriver --chromedriver_cdnurl=http://cdn.npm.taobao.org/dist/chromedriver
+```
+
+更新：npm.taobao.org 证书已经过期了，上面方法不好使了，我这里换成如下淘宝镜像的新地址依然报错：
+
+```shell
+npm install chromedriver --chromedriver_cdnurl=https://npmmirror.com/binaries/chromedriver
+```
+
+只能放弃淘宝，我换成了华为镜像,注意，地址最后的【/】不能缺失，否则报【500】错误
+
+```shell
+npm install chromedriver --chromedriver_cdnurl=https://repo.huaweicloud.com/chromedriver/
+```
+
+可以使用【.npmrc】文件统一配置这种类似的配置,比如：
+
+```shell
+# .npmrc 文件
+sass_binary_site=https://npmmirror.com/mirrors/node-sass
+chromedriver_cdnurl=https://repo.huaweicloud.com/chromedriver/
+phantomjs_cdnurl=https://registry.npmmirror.com/phantomjs
+electron_mirror=https://registry.npmmirror.com/electron
+
+registry=https://registry.npmmirror.com/
 ```
