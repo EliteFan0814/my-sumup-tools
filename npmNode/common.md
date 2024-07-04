@@ -110,8 +110,8 @@ npm install chromedriver --chromedriver_cdnurl=https://repo.huaweicloud.com/chro
 # .npmrc 文件
 sass_binary_site=https://npmmirror.com/mirrors/node-sass
 chromedriver_cdnurl=https://repo.huaweicloud.com/chromedriver/
-phantomjs_cdnurl=https://registry.npmmirror.com/phantomjs
-electron_mirror=https://registry.npmmirror.com/electron
+phantomjs_cdnurl=https://npmmirror.com/mirrors/phantomjs
+electron_mirror=https://npmmirror.com/mirrors/electron
 
 registry=https://registry.npmmirror.com/
 ```
