@@ -4,10 +4,12 @@
 | ---------------------- | ------------------------ |
 | ctrl + alt + L         | 格式化代码               |
 | ctrl + alt + B         | 查看子类                 |
+| ctrl + alt + M         | 快速生成方法             |
 | alt + shift + /        | 多行注释                 |
 | alt + shift + ↑↓       | 上下移动当前行           |
 | alt + enter            | 导入包、自动修正代码     |
 | alt + insert           | generator 快速生成       |
+| alt + 7                | 展示当前类的结构         |
 | alt + j                | 选中下一个相同内容       |
 | ctrl + shift + alt + j | 选中所有相同内容         |
 | ctrl + alt + F7        | 查看当前类在哪里被使用   |
