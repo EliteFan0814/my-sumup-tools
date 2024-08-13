@@ -1,6 +1,9 @@
 ---
 description: mysql常见问题
 ---
+## sql常用语句
+- SHOW CREATE TABLE employees; 展示表创建时的参数
+- DESCRIBE employees; 展示表结构
 
 ## navicat 连接 mysql8 报错：1251
 
