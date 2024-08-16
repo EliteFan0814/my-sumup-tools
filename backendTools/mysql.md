@@ -7,6 +7,21 @@ description: mysql常见问题
 - SHOW CREATE TABLE employees; 展示表创建时的参数
 - DESCRIBE employees; 展示表结构
 - SELECT xxx <=> null from tableName; 查询表中某列值是否为 null
+- SELECT xxx FROM table1 LIMIT (pageNumber - 1) * pageSize, pageSize; 分页查询
+
+## sql 语句执行顺序
+
+列的别名只能在 ORDER BY 中使用，不能在 WHERE 中使用。
+
+```sql
+SELECT name1,name2,name3 AS N3
+FROM table1
+WHERE name1 IN ('a','b','c')
+ORDER BY N3 DESC;
+```
+
+因为查询语句是从`FROME xxx WHERE xxx`开始的，然后才是`SELECT` `ORDER BY` 。  
+`WHERE`也需要声明在`FROM`后，`ORDER BY`之前。
 
 ## navicat 连接 mysql8 报错：1251
 
