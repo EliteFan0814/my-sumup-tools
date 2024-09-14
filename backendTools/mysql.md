@@ -9,6 +9,9 @@ description: mysql常见问题
 - SELECT xxx <=> null from tableName; 查询表中某列值是否为 null
 - SELECT xxx FROM table1 LIMIT (pageNumber - 1) * pageSize, pageSize; 分页查询
 
+## 小知识
+- 如果有n个表实现多表查询，则需要至少n-1个连接条件
+
 ## sql 语句执行顺序
 
 列的别名只能在 ORDER BY 中使用，不能在 WHERE 中使用。
