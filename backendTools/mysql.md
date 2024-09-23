@@ -7,10 +7,12 @@ description: mysql常见问题
 - SHOW CREATE TABLE employees; 展示表创建时的参数
 - DESCRIBE employees; 展示表结构
 - SELECT xxx <=> null from tableName; 查询表中某列值是否为 null
-- SELECT xxx FROM table1 LIMIT (pageNumber - 1) * pageSize, pageSize; 分页查询
+- SELECT xxx FROM table1 LIMIT (pageNumber - 1) \* pageSize, pageSize; 分页查询
 
 ## 小知识
-- 如果有n个表实现多表查询，则需要至少n-1个连接条件
+
+- 如果有 n 个表实现多表查询，则需要至少 n-1 个连接条件
+- UNION ALL 操作符返回两个查询结果集的并集，对于结果集中重复的部分不予处理，效率比 UNION 高
 
 ## sql 语句执行顺序
 
