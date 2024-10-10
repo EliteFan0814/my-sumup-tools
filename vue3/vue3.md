@@ -107,3 +107,39 @@ v-model 还可以用于各种不同类型的输入，`<textarea>、<select>` 元
 
 **_对于需要使用 IME 的语言 (中文，日文和韩文等)，你会发现 v-model 不会在 IME 输入还在拼字阶段时触发更新。如果你的确想在
 拼字阶段也触发更新，请直接使用自己的 input 事件监听器和 value 绑定而不要使用 v-model。_**
+
+### 计算属性 computed、侦听器 watch、watchEffect
+
+计算属性 computed：  
+它的 getter 应只做计算而没有任何其他的副作用！  
+不要改变其他状态、不要在 getter 中做异步请求或者更改 DOM！  
+一个计算属性的声明中描述的是如何根据其他值派生一个值。因此 getter 的职责应该仅为计算和返回该值。
+
+侦听器 watch：  
+需要在状态变化时执行一些“副作用”：例如更改 DOM，或是根据异步操作的结果去修改另一处的状态。
+
+watchEffect：  
+对于有多个依赖项的侦听器来说，使用 watchEffect() 可以消除手动维护依赖列表的负担；  
+如果你需要侦听一个嵌套数据结构中的几个属性，watchEffect() 可能会比深度侦听器更有效，因为它将只跟踪回调中被使用到的属性，
+而不是递归地跟踪所有的属性。
+
+```js
+const todoId = ref(1);
+const data = ref(null);
+
+// watch写法
+watch(
+  todoId,
+  async () => {
+    const response = await fetch(`https://jsonplaceholder.typicode.com/todos/${todoId.value}`);
+    data.value = await response.json();
+  },
+  { immediate: true }
+);
+
+// watchEffect 写法
+watchEffect(async () => {
+  const response = await fetch(`https://jsonplaceholder.typicode.com/todos/${todoId.value}`);
+  data.value = await response.json();
+});
+```
