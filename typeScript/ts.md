@@ -18,7 +18,7 @@ console.log(0 || 1) // 1
 console.log(null ?? 1) // 1
 console.log(undefined ?? 1) // 1
 console.log(2 ?? 1) // 2
-console.log(0 || 1) // 0
+console.log(0 ?? 1) // 0
 ```
 
 我们发现 0||1 返回的是 1，而 0??1 返回的是 0
