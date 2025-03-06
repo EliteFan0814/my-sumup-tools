@@ -32,6 +32,69 @@ description: CSS常用样式集合
 }
 ```
 
+## 自定义单选、多选按钮样式
+
+```css
+/* 单选按钮样式 */
+
+input[type="radio"]::before {
+  position: relative;
+  content: "";
+  top: -1px;
+  left: -1px;
+  width: 17px;
+  height: 17px;
+  display: block;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 1px solid #6b4bff;
+  z-index: 5;
+}
+input[type="radio"]:checked::after {
+  position: relative;
+  content: "";
+  bottom: 15px;
+  left: 4px;
+  width: 9px;
+  height: 9px;
+  display: block;
+  border-radius: 50%;
+  visibility: visible;
+  background-color: #6b4bff;
+  z-index: 6;
+}
+
+/* 多选按钮样式 */
+input[type="checkbox"] {
+  cursor: pointer;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  font-size: 14px;
+}
+input[type="checkbox"]::after {
+  position: absolute;
+  top: 0;
+  border: none;
+  color: #fff;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  visibility: visible;
+  padding-left: 0px;
+  text-align: center;
+  content: " ";
+  border-radius: 1px;
+}
+input[type="checkbox"]:checked::after {
+  background-color: #6b4bff;
+  border-color: #6b4bff;
+  content: "✓";
+  font-size: 14px;
+  font-weight: bold;
+}
+```
+
 ## 绝对定位居中
 
 ```css
