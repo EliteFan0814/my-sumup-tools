@@ -1,3 +1,27 @@
+## 小程序 scroll-view 组件 scrollTop 无效 bug
+
+```html
+<scroll-view :scroll-top="scrollTop" scroll-y="true"></scroll-view>
+```
+
+```js
+const scrollTop = ref(0);
+function handleScrollToTop() {
+  scrollTop.value = 0;
+}
+```
+
+在实际运用中，发现设置了 scroll-top 无效，滚动条位置并没有发生变化  
+设置 scroll-top 的值如果和原值一样的话不会重新渲染页面。  
+所以给这个值加一个很小的数让它识别到变化，这个很小的值对页面返回顶部的效果影响不大
+
+```js
+const scrollTop = ref(0);
+function handleScrollToTop() {
+  scrollTop.value = scrollTop.value + 0.00001;
+}
+```
+
 ## vscode 中.scss 实时转换为.wxss / vscode 中使用 scss
 
 1. 首先在 vscode 中安装插件 easySass
@@ -69,7 +93,7 @@ wx.getSystemInfoSync().windowWidth 单位为 px
 // 小程序中的 app.js 中定义 capsuleToTop
 globalData: {
   //胶囊按钮距离顶部距离= 手机状态栏的高度(px)+6px
-  capsuleToTop: wx.getSystemInfoSync()['statusBarHeight'] + 6
+  capsuleToTop: wx.getSystemInfoSync()["statusBarHeight"] + 6;
 }
 ```
 
@@ -83,9 +107,9 @@ globalData: {
 <script>
   Page({
     data: {
-      capsuleToTop: app.globalData.capsuleToTop
-    }
-  })
+      capsuleToTop: app.globalData.capsuleToTop,
+    },
+  });
 </script>
 ```
 
@@ -101,8 +125,7 @@ globalData: {
   duration="{{500}}"
   bindchange="handleChange"
   style="height:{{imgheights[current]}}rpx;"
-  class="swiper"
->
+  class="swiper">
   <block wx:for="{{imgUrls}}" wx:key="*this">
     <swiper-item class="swiper-item">
       <view class="block">{{index+1}}/{{imgUrls.length}}</view>
@@ -112,8 +135,7 @@ globalData: {
         mode="widthFix"
         class="swiper-image"
         src="{{item}}"
-        bindload="imageLoad"
-      />
+        bindload="imageLoad" />
     </swiper-item>
   </block>
 </swiper>
@@ -126,7 +148,7 @@ Page({
     //所有图片的高度
     imgheights: [],
     // 当前 active
-    current: 0
+    current: 0,
   },
   // 处理加载的图片
   imageLoad: function (e) {
@@ -134,23 +156,23 @@ Page({
     let imgwidth = e.detail.width,
       imgheight = e.detail.height,
       //计算宽高比
-      ratio = imgwidth / imgheight
+      ratio = imgwidth / imgheight;
     //计算的高度值
-    let viewHeight = 750 / ratio
-    let imgheight = viewHeight
-    let imgheights = this.data.imgheights
+    let viewHeight = 750 / ratio;
+    let imgheight = viewHeight;
+    let imgheights = this.data.imgheights;
     //把每一张图片的对应的高度记录到数组里
-    imgheights[e.target.dataset.id] = imgheight
+    imgheights[e.target.dataset.id] = imgheight;
     this.setData({
-      imgheights: imgheights
-    })
+      imgheights: imgheights,
+    });
   },
   handleChange: function (e) {
     this.setData({
-      current: e.detail.current
-    })
-  }
-})
+      current: e.detail.current,
+    });
+  },
+});
 ```
 
 ```css
@@ -170,7 +192,7 @@ Page({
   }
 </style>
 <script>
-  const temp = content.replace(/\<img/gi, '<img class="rich-img" ')
+  const temp = content.replace(/\<img/gi, '<img class="rich-img" ');
 </script>
 ```
 
@@ -242,12 +264,12 @@ handleCurrentPage(){
 wx.navigateBack({
   delta: 1,
   success: function () {
-    const page = getCurrentPages().pop()
-    if (page == undefined || page == null) return
-    page.getUserInfo()
-    page.getRewardList()
-  }
-})
+    const page = getCurrentPages().pop();
+    if (page == undefined || page == null) return;
+    page.getUserInfo();
+    page.getRewardList();
+  },
+});
 ```
 
 ## 刷新上个页面数据

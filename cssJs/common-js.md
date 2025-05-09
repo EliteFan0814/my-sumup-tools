@@ -393,3 +393,11 @@ function handle() {
 // 快速点击浏览器进行测试
 window.addEventListener("click", throttle(handle, 1000));
 ```
+
+## 判断一个字符串能否转换为有效的数字类型
+
+```js
+function isNumeric(str) {
+  return typeof str === "string" && str.trim() !== "" && !isNaN(str);
+}
+```
