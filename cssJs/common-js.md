@@ -9,13 +9,12 @@
 示例：[1,2,3,4,5,6,7,8,9,10] 转换为 [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10]]
 
 ```javascript
-const sliceArray = function (targetArray, number) {
-  const page = Math.ceil(targetArray.length / number);
-  const returnArr = [];
-  for (let i = 0; i < page; i++) {
-    returnArr[i] = targetArray.slice(i * number, (i + 1) * number);
+const sliceArray = function (arr, num) {
+  const result = [];
+  for (let i = 0; i < arr.length; i += num) {
+    result.push(arr.slice(i, i + num));
   }
-  return returnArr;
+  return result;
 };
 ```
 
