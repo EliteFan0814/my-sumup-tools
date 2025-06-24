@@ -400,3 +400,45 @@ function isNumeric(str) {
   return typeof str === "string" && str.trim() !== "" && !isNaN(str);
 }
 ```
+
+## 压缩下载图片
+
+```javascript
+import JSZip from "jszip";
+import { saveAs } from "file-saver";
+
+async function downloadImages(imageUrls, zipFileName = "images.zip") {
+  const zip = new JSZip();
+  const imgFolder = zip.folder("images"); // 创建一个名为 'images' 的文件夹
+
+  // 异步获取并添加图片到压缩包
+  const imagePromises = imageUrls.map(async (imageUrl, index) => {
+    try {
+      const response = await fetch(imageUrl);
+      const blob = await response.blob();
+      const filename = imageUrl.substring(imageUrl.lastIndexOf("/") + 1) || `image-${index + 1}.jpg`;
+      imgFolder.file(filename, blob);
+    } catch (error) {
+      console.error(`Error downloading or adding image ${imageUrl}:`, error);
+      // 可以选择添加错误处理逻辑，比如跳过，或者提示用户
+    }
+  });
+
+  // 等待所有图片都处理完毕
+  await Promise.all(imagePromises);
+
+  // 生成zip文件
+  zip.generateAsync({ type: "blob" }).then(function (content) {
+    saveAs(content, zipFileName);
+  });
+}
+
+// 示例用法
+const imageUrls = [
+  "https://example.com/image1.jpg",
+  "https://example.com/image2.png",
+  "https://example.com/image3.gif",
+];
+
+downloadImages(imageUrls, "my_images.zip");
+```
