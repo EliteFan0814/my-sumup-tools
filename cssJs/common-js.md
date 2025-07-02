@@ -239,6 +239,244 @@ const resArr = uniqueArr(tempArr);
 console.log(resArr); // [1, 2, 3, "3", 4, "4", 5, 6]
 ```
 
+## 前端排序
+
+1. 简单排序
+
+```js
+let students = [
+  { name: "安吉利", score: 85, id: "324" },
+  { name: "Ade", score: 92, id: "154" },
+  { name: "aww", score: 78, id: "1666" },
+  { name: "维尔得", score: 92, id: "12" },
+];
+
+// 1. 按分数升序排序
+students.sort(function (a, b) {
+  return a.score - b.score;
+});
+console.log("按分数升序:", students);
+
+// 2. 按分数降序排序
+students.sort(function (a, b) {
+  return b.score - a.score;
+});
+console.log("按分数降序:", students);
+
+// 3. 倒序整个数组
+students.reverse();
+console.log("倒序:", students);
+
+// 4. 按姓名升序排序 (简单字符串比较)
+students.sort(function (a, b) {
+  if (a.name < b.name) {
+    return -1;
+  }
+  if (a.name > b.name) {
+    return 1;
+  }
+  return 0;
+});
+console.log("按姓名升序:", students);
+```
+
+2. 数字中英混合排序(简单)  
+   代码说明：  
+   使用 localeCompare 方法：  
+   localeCompare 是 JavaScript 内置的字符串比较方法  
+   参数 'zh-CN' 指定使用中文（简体）的排序规则  
+   自动处理中文字符的拼音排序（按拼音首字母顺序）
+
+   排序规则：  
+   中文按拼音首字母排序（如：陈(C) < 李(L) < 王(W) < 张(Z)）  
+   英文按字母顺序排序（A-Z）  
+   中英混合时统一按拼音/字母顺序混合排序（如：Alice < Bob < 陈六 < 李四）
+
+```js
+function sortByName(arr) {
+  return arr.sort((a, b) => {
+    return a.name.localeCompare(b.name, "zh-CN");
+    /*
+     如需区分大小写：添加 sensitivity: 'case' 选项
+     如需数字智能排序：添加 numeric: true 选项
+
+    return a.name.localeCompare(b.name, "zh-CN", {
+      sensitivity: "case",
+      numeric: true,
+    });
+    */
+  });
+}
+
+// 示例用法
+const arrayA = [
+  { name: "1" },
+  { name: "1123" },
+  { name: "表格导入商标状态待审中1" },
+  { name: "1A123" },
+  { name: "测试权重2" },
+  { name: "1a" },
+  { name: "www测" },
+  { name: "NIAOREN" },
+  { name: "Alice" },
+  { name: "Bob" },
+  { name: "13网银" },
+  { name: "3wang英吉利" },
+  { name: "陈六" },
+  { name: "bob" },
+];
+
+const sortedArray = sortByName(arrayA);
+console.log(sortedArray);
+// 注意！！！不同环境的js打印出的结果不一样，我测试的就有如下两种结果
+
+/* 结果1：
+[
+  { name: '1' },
+  { name: '1123' },
+  { name: '13网银' },
+  { name: '1a' },
+  { name: '1A123' },
+  { name: '3wang英吉利' },
+  { name: 'Alice' },
+  { name: 'bob' },
+  { name: 'Bob' },
+  { name: 'NIAOREN' },
+  { name: 'www测' },
+  { name: '测试权重2' },
+  { name: '表格导入商标状态待审中1' },
+  { name: '陈六' }
+]
+*/
+
+/* 结果2：
+[
+  { name: '1' },
+  { name: '1123' },
+  { name: '13网银' },
+  { name: '1a' },
+  { name: '1A123' },
+  { name: '3wang英吉利' },
+  { name: '测试权重2' },
+  { name: '表格导入商标状态待审中1' },
+  { name: '陈六' }
+  { name: 'Alice' },
+  { name: 'bob' },
+  { name: 'Bob' },
+  { name: 'NIAOREN' },
+  { name: 'www测' },
+]
+*/
+```
+
+3. 数字中英混合排序(严谨)  
+   以下是实现按照数字 > 字母 > 中文的优先级进行排序的 JavaScript 代码：
+
+```javascript
+function sortByName(arr) {
+  return arr.sort((a, b) => {
+    const nameA = a.name || "";
+    const nameB = b.name || "";
+
+    // 判断字符类型
+    const getCharType = (char) => {
+      if (!char) return 3; // 空值处理
+      if (/[\d]/.test(char)) return 0; // 数字
+      if (/[a-zA-Z]/.test(char)) return 1; // 字母
+      return 2; // 中文及其他
+    };
+
+    // 获取第一个有效字符的类型
+    const firstCharA = nameA.charAt(0);
+    const firstCharB = nameB.charAt(0);
+    const typeA = getCharType(firstCharA);
+    const typeB = getCharType(firstCharB);
+
+    // 不同类型按优先级排序
+    if (typeA !== typeB) {
+      return typeA - typeB;
+    }
+
+    // 相同类型使用localeCompare排序
+    return nameA.localeCompare(nameB, "zh-CN");
+  });
+}
+
+// 测试示例
+const testData = [
+  { name: "张三" },
+  { name: "李四" },
+  { name: "apple" },
+  { name: "Banana" },
+  { name: "王五" },
+  { name: "123" },
+  { name: "42" },
+  { name: "赵六" },
+  { name: "zebra" },
+  { name: "apple" },
+  { name: "陈七" },
+  { name: "" }, // 测试空字符串
+  { name: "中文" },
+  { name: "Alphabet" },
+];
+
+const sortedData = sortByName(testData);
+console.log(sortedData);
+```
+
+- 代码说明：
+
+1. **优先级规则**：
+
+- **数字开头**（0-9）优先于所有其他类型
+- **字母开头**（a-z，A-Z）次优先
+- **中文/其他字符**最后
+
+2. **实现逻辑**：
+
+- **字符类型检测**：使用正则表达式判断首字符类型
+- **优先级排序**：不同类型按数字(0) > 字母(1) > 中文(2)的顺序排序
+- **同类型排序**：
+  - 数字：按数值大小排序（如"42" > "123"）
+  - 字母：按字母顺序排序（不区分大小写）
+  - 中文：按拼音首字母排序
+
+3. **特殊处理**：
+
+- 空字符串或 undefined 视为中文类型
+- 支持中英文混合字符串（如"中文 abc"）
+- 正确处理大小写字母（A-Z 排在 a-z 之前）
+
+- 测试输出结果：
+
+```javascript
+[
+  { name: "123" }, // 数字
+  { name: "42" }, // 数字
+  { name: "Alphabet" }, // 字母
+  { name: "apple" }, // 字母
+  { name: "apple" }, // 字母
+  { name: "Banana" }, // 字母
+  { name: "zebra" }, // 字母
+  { name: "" }, // 空字符串(视为中文)
+  { name: "陈七" }, // 中文
+  { name: "李四" }, // 中文
+  { name: "王五" }, // 中文
+  { name: "张三" }, // 中文
+  { name: "赵六" }, // 中文
+  { name: "中文" }, // 中文
+];
+```
+
+- 关键特点：
+
+1. **多级排序**：优先按首字符类型排序，再按具体值排序
+2. **中文支持**：使用`localeCompare`的'zh-CN'参数实现拼音排序
+3. **健壮性**：处理了空值、空字符串等边界情况
+4. **效率优化**：仅对首字符进行类型检测，减少计算量
+
+此实现严格遵循数字 > 字母 > 中文的优先级规则，同时确保同类型内的合理排序，满足各种实际应用场景的需求。
+
 ## 数组取交集/差集
 
 ```javascript
@@ -262,6 +500,62 @@ difference(a, b); // [4,5,7,8,9]
 arrayIncludes(a,b){
   return b.every(val=>a.includes(val));
 }
+```
+
+## 实现按照给定 ID 数组顺序对对象数组进行排序
+
+```js
+function sortByIds(A, B) {
+  // 创建映射：ID -> 在A中的索引
+  const idIndexMap = new Map();
+  A.forEach((id, index) => {
+    idIndexMap.set(id, index);
+  });
+
+  // 创建新数组避免修改原数组，同时记录原始索引
+  const sortable = B.map((item, originalIndex) => ({
+    item,
+    originalIndex,
+    // 计算排序索引：如果ID在A中存在则使用A中的索引，否则排在最后并保持相对顺序
+    sortIndex: idIndexMap.has(item.id) ? idIndexMap.get(item.id) : A.length + originalIndex,
+  }));
+
+  // 按排序索引进行排序
+  sortable.sort((a, b) => a.sortIndex - b.sortIndex);
+
+  // 返回排序后的对象数组
+  return sortable.map((entry) => entry.item);
+}
+
+// 使用示例
+const A = [3, 1, 2];
+const B = [
+  { id: 1, name: "Alice" },
+  { id: 2, name: "Bob" },
+  { id: 3, name: "Charlie" },
+  { id: 4, name: "David" }, // 不在A中的ID
+];
+
+const sortedB = sortByIds(A, B);
+console.log(sortedB);
+/* 输出：
+[
+    {id: 3, name: 'Charlie'},  // 对应A[0]
+    {id: 1, name: 'Alice'},    // 对应A[1]
+    {id: 2, name: 'Bob'},      // 对应A[2]
+    {id: 4, name: 'David'}     // 不在A中的元素保持原相对顺序
+]
+*/
+```
+
+## 字符串转数组
+
+```js
+const str = "1, 2, 3, 4, 5";
+
+const arr1 = str.split(",");
+// 去除空格
+const arr2 = str.split(",").map((item) => item.trim());
 ```
 
 ## 下划线转驼峰命名
